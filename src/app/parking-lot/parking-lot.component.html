@@ -1,0 +1,18 @@
+<p>parking-lot works!</p>
+<div *ngFor="let ParkingLot of list">
+    {{ParkingLot.name}}
+</div>
+<form [formGroup] = "form"
+    class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Seleccione la ciudad</mat-label>
+        <input type="email" matInput
+            placeholder="Ex. pat@example.com">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Select an option</mat-label>
+        <mat-select >
+          <mat-option *ngFor="let City of ListCities" value={{City.id}}>{{City.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+</form>
