@@ -5,9 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParkingLotComponent } from './parking-lot/parking-lot.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -21,7 +28,12 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSortModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

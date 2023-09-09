@@ -1,18 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ParkingLotService } from '../service/parking-lot.service';
 import { ParkingLot } from 'Models/ParkingLot';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { City } from 'Models/City';
 import { CityService } from '../service/city/city.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-parking-lot',
   templateUrl: './parking-lot.component.html',
   styleUrls: ['./parking-lot.component.css']
 })
-export class ParkingLotComponent implements OnInit {
+export class ParkingLotComponent implements OnInit, AfterViewInit {
   public list : ParkingLot[] = [];
   public ListCities : City[] = [];
+  dataSource = new MatTableDataSource<ParkingLot>();
+  displayedColumns: string[] = ['Name', 'Adress', 'Nit']
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;//! le estamos diciendo que no es nulo
+  //esta línea de código está configurando una referencia al paginador de Angular Material para que pueda ser utilizado y manipulado en el componente donde se encuentra esta declaración
+  @ViewChild(MatSort) sort!: MatSort;
+
   form: FormGroup;
 constructor(private _ParkingLotService:ParkingLotService, private _CityService:CityService, private formBuilder: FormBuilder){ 
   this.form = this.formBuilder.group({
@@ -28,7 +38,6 @@ constructor(private _ParkingLotService:ParkingLotService, private _CityService:C
     cantSpacesDisability: ['']
     }) 
 }
-
 AddParkingLot() {
   const model: ParkingLot = {
     id: "",
@@ -56,15 +65,27 @@ AddParkingLot() {
     }
   )
 }
-
 ngOnInit(): void {
-  //this.getParkingLot();
+  this.getParkingLot();
   this.getCity();
 }
+ngAfterViewInit() {
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
+}
 getParkingLot(){
-  this._ParkingLotService.getParkingLots().subscribe(response =>{ this.list = response;});
+  this._ParkingLotService.getParkingLots().subscribe(response =>{ this.dataSource.data = response;});
 }
 getCity(){
   this._CityService.getCity().subscribe(response =>{ this.ListCities = response;});
+}
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+/*
+  if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage();
+  }
+  */
 }
 }
