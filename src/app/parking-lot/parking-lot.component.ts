@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { ParkingLotService } from '../service/parking-lot.service';
+import { ParkingLotService } from '../service/parkingLot/parking-lot.service';
 import { ParkingLot } from 'Models/ParkingLot';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { City } from 'Models/City';
@@ -17,10 +17,11 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   public list : ParkingLot[] = [];
   public ListCities : City[] = [];
   dataSource = new MatTableDataSource<ParkingLot>();
-  displayedColumns: string[] = ['Name', 'Adress', 'Nit']
+  displayedColumns: string[] = ['Name', 'Adress', 'City']
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;//! le estamos diciendo que no es nulo
-  //esta línea de código está configurando una referencia al paginador de Angular Material para que pueda ser utilizado y manipulado en el componente donde se encuentra esta declaración
+  //esta línea de código está configurando una referencia al paginador de Angular Material
+  //para que pueda ser utilizado y manipulado en el componente donde se encuentra esta declaración
   @ViewChild(MatSort) sort!: MatSort;
 
   form: FormGroup;
@@ -51,8 +52,9 @@ AddParkingLot() {
     cantSpacesMotorcycle: this.form.value.cantSpacesMotorcycle,
     cantSpacesCar: this.form.value.cantSpacesCar,
     cantSpacesDisability: this.form.value.cantSpacesDisability,
-    CityId: "",
-    PropietaryParkId: ""
+    cityId: "",
+    cityName: "",
+    propietaryParkId: ""
   }
   console.log(model);
   this._ParkingLotService.AddParkingLot(model).subscribe(
@@ -66,14 +68,14 @@ AddParkingLot() {
   )
 }
 ngOnInit(): void {
-  this.getParkingLot();
+  this.getParkingLots();
   this.getCity();
 }
 ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
   this.dataSource.sort = this.sort;
 }
-getParkingLot(){
+getParkingLots(){
   this._ParkingLotService.getParkingLots().subscribe(response =>{ this.dataSource.data = response;});
 }
 getCity(){
@@ -82,10 +84,6 @@ getCity(){
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
   this.dataSource.filter = filterValue.trim().toLowerCase();
-/*
-  if (this.dataSource.paginator) {
-    this.dataSource.paginator.firstPage();
-  }
-  */
+
 }
 }

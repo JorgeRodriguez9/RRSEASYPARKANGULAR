@@ -14,12 +14,11 @@ export class ParkingLotService {
 
   constructor(private _http: HttpClient) { }
 
-  public getParkingLots():Observable<ParkingLot[]>{
+  public getParkingLots(): Observable<ParkingLot[]> {
     return this._http.get<ParkingLot[]>(this.Endpoint + this.complement);
   }
-  public AddParkingLot(parkingLot:ParkingLot):Observable<ParkingLot>
-  {
-   return this._http.post<ParkingLot>(this.Endpoint + this.complement,parkingLot);
-  }
-
+ 
+  public AddParkingLot(parkingLot: ParkingLot): Observable<ParkingLot> {
+    return this._http.post<ParkingLot>(this.Endpoint + this.complement, parkingLot);
+  } 
 }
