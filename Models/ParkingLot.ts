@@ -10,6 +10,7 @@ export interface ParkingLot {
     cantSpacesMotorcycle: number;
     cantSpacesCar: number;
     cantSpacesDisability: number;
-    CityId: string; 
-    PropietaryParkId: string; 
+    cityId: string; 
+    cityName: string;
+    propietaryParkId: string; 
 }
