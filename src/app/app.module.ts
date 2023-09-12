@@ -13,7 +13,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatSortModule} from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
@@ -32,7 +31,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatPaginatorModule,
     MatTableModule,
     MatSlideToggleModule,
-    MatSortModule,
     MatFormFieldModule
   ],
   providers: [],
