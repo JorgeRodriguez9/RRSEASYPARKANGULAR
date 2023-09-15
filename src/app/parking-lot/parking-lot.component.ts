@@ -6,17 +6,30 @@ import { City } from 'Models/City';
 import { CityService } from '../service/city/city.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-parking-lot',
   templateUrl: './parking-lot.component.html',
-  styleUrls: ['./parking-lot.component.css']
+  styleUrls: ['./parking-lot.component.css'],
+  
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]  
+  
 })
 export class ParkingLotComponent implements OnInit, AfterViewInit {
   public list : ParkingLot[] = [];
   public ListCities : City[] = [];
   dataSource = new MatTableDataSource<ParkingLot>();
-  displayedColumns: string[] = ['Name', 'Adress', 'City']
+  displayedColumns: string[] = ['Name', 'Adress', 'City'];
+  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+  expandedElement!: ParkingLotComponent | null;
+ 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;//! le estamos diciendo que no es nulo
   //esta línea de código está configurando una referencia al paginador de Angular Material
