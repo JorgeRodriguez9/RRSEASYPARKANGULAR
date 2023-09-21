@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { ParkingLotComponent } from './parking-lot/parking-lot.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
@@ -17,6 +16,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
+import {Component} from '@angular/core';
+import {NgFor} from '@angular/common';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import {MatButtonModule} from '@angular/material/button';
     ParkingLotComponent
   ],
   imports: [
-    BrowserModule,
+    NgFor,
+    MatGridListModule,
+    BrowserModule,   
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
