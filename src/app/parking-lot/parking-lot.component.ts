@@ -7,6 +7,8 @@ import { CityService } from '../service/city/city.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Tile } from 'Interfaces/Tile';
+
 
 @Component({
   selector: 'app-parking-lot',
@@ -25,12 +27,13 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class ParkingLotComponent implements OnInit, AfterViewInit {
   public list : ParkingLot[] = [];
   public ListCities : City[] = [];
+  
   dataSource = new MatTableDataSource<ParkingLot>();
   displayedColumns: string[] = ['Name', 'Adress', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement!: ParkingLotComponent | null;
- 
-
+  
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;//! le estamos diciendo que no es nulo
   //esta línea de código está configurando una referencia al paginador de Angular Material
   //para que pueda ser utilizado y manipulado en el componente donde se encuentra esta declaración
@@ -86,6 +89,7 @@ AddParkingLot() {
     }
   )
 }
+
 ngOnInit(): void {
   this.getParkingLots();
   this.getCity();
@@ -162,9 +166,14 @@ applyCityFilter() {
   } else {
     console.error('Alguno de los controles no está definido.');
   }
-
-  
-
   
 }
+
+//tiles: Tile[] = [
+  //{text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+  //{text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+  //{text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+  //{text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+//];
+
 }
