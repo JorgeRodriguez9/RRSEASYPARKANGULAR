@@ -1,4 +1,4 @@
-export interface Client {
+export interface ClientParkingLot {
     id: string;
     name: string;
     identification: number;

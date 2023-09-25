@@ -29,7 +29,7 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   public ListCities : City[] = [];
   
   dataSource = new MatTableDataSource<ParkingLot>();
-  displayedColumns: string[] = ['Name', 'Adress', 'City'];
+  displayedColumns: string[] = ['Icon','Name', 'Adress', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement!: ParkingLotComponent | null;
   
@@ -45,7 +45,8 @@ constructor(private _ParkingLotService:ParkingLotService, private _CityService:C
   
   this.cityform = this.fb.group({
     selectedCity: [''],
-    filterValue: ['']
+    filterValue: [''],
+    disabilityservice: ['']
   });
 
   this.form = this.formBuilder.group({
@@ -74,6 +75,7 @@ AddParkingLot() {
     cantSpacesMotorcycle: this.form.value.cantSpacesMotorcycle,
     cantSpacesCar: this.form.value.cantSpacesCar,
     cantSpacesDisability: this.form.value.cantSpacesDisability,
+    disabilityservices: this.form.value.disabilityservices,
     cityId: "",
     cityName: "",
     propietaryParkId: ""
@@ -133,17 +135,19 @@ applyFilterCity(event: MatSelectChange) {
 applyCityFilter() {
   const selectedCityControl = this.cityform.get('selectedCity');
   const filterValueControl = this.cityform.get('filterValue');
+  const disabilityserviceControl = this.cityform.get('disabilityservice');
 
-  if (selectedCityControl && filterValueControl) {
+  if (selectedCityControl && filterValueControl && disabilityserviceControl) {
     const selectedCity = selectedCityControl.value;
     const filterValue = filterValueControl.value;
+    const disabilityservice = disabilityserviceControl.value;
 
-    this.dataSource.filter = JSON.stringify({ selectedCity, filterValue });
+    this.dataSource.filter = JSON.stringify({ selectedCity, filterValue, disabilityservice});
     //esta cogiendo selectedCity y filterValue, y los une y los convierte en una cadena de texto. Esto le dice al programa qué buscar en los datos.
     //en resumen esta asignando como sera el filtro que necesita
 
     this.dataSource.filterPredicate = (data, filters) => {
-    const { selectedCity, filterValue } = JSON.parse(filters);
+    const { selectedCity, filterValue, disabilityservice} = JSON.parse(filters);
 
     //filterPredicate: aqui le decimos que muestre solo los objetos que cumplan con ciertas condiciones que yo extablesco
     //filterPredicate se ejecuta automáticamente en cada dato cuando se aplica el filtro en la interfaz de usuario.
@@ -157,11 +161,16 @@ applyCityFilter() {
       textFilter = data.adress.toLowerCase().includes(filterValue.toLowerCase());
     }
 
-    return cityFilter && textFilter;
+    let parkingTypeFilter = true;
+    if (disabilityservice) {
+      parkingTypeFilter = data.disabilityservices === disabilityservice;
+    }
+
+    return cityFilter && textFilter && parkingTypeFilter;
 
   };
   if (!filterValue) {
-    this.dataSource.filter = JSON.stringify({ selectedCity, filterValue: '' });
+    this.dataSource.filter = JSON.stringify({ selectedCity, disabilityservice, filterValue: '' });
   }
   } else {
     console.error('Alguno de los controles no está definido.');
