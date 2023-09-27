@@ -1,0 +1,29 @@
+<div class="title">
+    <h1>Reservas</h1>
+</div>
+
+<h1>Nombre del parqueadero</h1>
+
+<mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Tipos de parqueaderos:</mat-label>
+    <mat-select formControlName="disabilityservice">
+      <mat-option value="SI">DISCAPACITADOS</mat-option>
+      <mat-option value="NO">NORMALES</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<mat-form-field>
+    <mat-label>Seleccione una ciudad</mat-label>
+    <mat-select formControlName="selectedCity">
+      <mat-option value="">Todos</mat-option>
+      <!--<mat-option *ngFor="let TypoVehicle of ListTypoVehiculo" value={{TypoVehicle.id}}>{{TypoVehicle.name}}</mat-option>-->
+    </mat-select>
+  </mat-form-field>

@@ -20,14 +20,16 @@ import {Component} from '@angular/core';
 import {NgFor} from '@angular/common';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { PrincipalPageComponent } from './components/principal-page/principal-page.component';
-
-
+import { ReservationComponent } from './components/reservation/reservation.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     ParkingLotComponent,
-    PrincipalPageComponent
+    PrincipalPageComponent,
+    ReservationComponent
   ],
   imports: [
     NgFor,
@@ -45,7 +47,9 @@ import { PrincipalPageComponent } from './components/principal-page/principal-pa
     MatFormFieldModule,
     MatIconModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,54 +2,12 @@
   margin: 0 20%;
 }
 
-.mat-mdc-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-.example-element-description {
-  padding: 16px;
-}
-
 .description{
   margin-top: 10px;
 }
 
-.info-line {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 100px; 
-  margin-left: 50px;
-}
-
-.info-line2 {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 100px; 
-  margin-left: 50px;
-}
-
-.title {
-  padding: 30px;
-  background-color: #297efd;
-  text-align: center;
-  color: white;
-}
-
-table {
-  width: 100%;
-}
-
-tr.example-detail-row {
-  height: 0;
-}
-
-tr.example-element-row:not(.example-expanded-row):hover {
-  background: whitesmoke;
-}
-
-tr.example-element-row:not(.example-expanded-row):active {
-  background: #efefef;
+.example-element-description {
+  padding: 16px;
 }
 
 .example-element-row td {
@@ -68,6 +26,49 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
+
+.info-line {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 100px; 
+  margin-left: 50px;
+}
+
 .icon-blue {
   color: blue; /* Cambia el color al que desees, en este caso, azul */
+}
+
+.info-line2 {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 100px; 
+  margin-left: 50px;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.title {
+  padding: 30px;
+  background-color: #297efd;
+  text-align: center;
+  color: white;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
 }
