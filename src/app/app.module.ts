@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ParkingLotComponent } from './parking-lot/parking-lot.component';
+import { ParkingLotComponent } from './components/parking-lot/parking-lot.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatInputModule} from '@angular/material/input';
@@ -19,13 +19,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {Component} from '@angular/core';
 import {NgFor} from '@angular/common';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { PrincipalPageComponent } from './components/principal-page/principal-page.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ParkingLotComponent
+    ParkingLotComponent,
+    PrincipalPageComponent
   ],
   imports: [
     NgFor,

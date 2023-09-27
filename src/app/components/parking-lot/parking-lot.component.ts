@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { ParkingLotService } from '../service/parkingLot/parking-lot.service';
+import { ParkingLotService } from '../../service/parkingLot/parking-lot.service';
 import { ParkingLot } from 'Models/ParkingLot';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { City } from 'Models/City';
-import { CityService } from '../service/city/city.service';
+import { CityService } from '../../service/city/city.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
