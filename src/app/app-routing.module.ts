@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ParkingLotComponent } from './parking-lot/parking-lot.component';
+import { ParkingLotComponent } from './components/parking-lot/parking-lot.component';
 
 const routes: Routes = [
   {path: 'ParkingLot', component:ParkingLotComponent}
