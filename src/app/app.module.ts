@@ -24,8 +24,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
-
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -54,7 +53,8 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

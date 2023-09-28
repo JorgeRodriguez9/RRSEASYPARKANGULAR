@@ -18,6 +18,10 @@
    
   }
   
+  .space{
+    margin-top: 4%;
+  }
+
   .example-card {
     max-width: 400px;
   }
@@ -26,7 +30,39 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
-  
+
+ /* Estilo para la etiqueta */
+.form-label {
+  font-size: 18px;
+  color: #8f8f8f;
+  margin-bottom: 0; /* Se elimina el margen inferior para que la etiqueta esté dentro del recuadro */
+  display: block;
+}
+
+/* Estilo para el contenedor (form-group) */
+.form-group {
+  background-color: #f2f2f2; /* Color de fondo gris claro */
+  padding: 15px; /* Relleno interno */
+  border-bottom: 2px solid #ccc; /* Borde inferior de 2px sólido en color gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Cambia el estilo del contenedor al enfocarse en el campo */
+.form-group:focus-within {
+  border-color: #6c757d; /* Cambia el color del borde inferior al enfocarse */
+}
+
+/* Estilo para el campo de entrada */
+.form-control {
+  padding: 0;
+  border: none; /* Elimina el borde del campo */
+  width: 100%;
+  font-size: 16px;
+  outline: none; /* Elimina el contorno al hacer clic */
+  background: transparent; /* Fondo transparente */
+}
+
   .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;

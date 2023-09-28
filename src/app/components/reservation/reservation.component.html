@@ -2,21 +2,19 @@
   <h1>Reservas</h1>
 </div>
 
-<div class="centered-text" *ngIf = "parking != undefined">
+<div class="centered-text" *ngIf="parking != undefined">
   <h1>{{parking.name}}</h1>
 </div>
 
-<div class="container" *ngIf = "parking != undefined">
+<div class="container" *ngIf="parking != undefined">
   <div class="column column1">
-    <mat-form-field>
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+        
+    <div class="form-group">
+      <label for="birthdaytime" class="form-label">Fecha y hora:</label>
+      <input type="datetime-local" id="birthdaytime" name="birthdaytime" class="form-control">
+    </div>
 
-    <mat-form-field>
+    <mat-form-field class = "space">
       <mat-label>Tipos de parqueaderos:</mat-label>
       <mat-select>
         <mat-option value="SI">DISCAPACITADOS</mat-option>
