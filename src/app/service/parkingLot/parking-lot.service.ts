@@ -18,8 +18,8 @@ export class ParkingLotService {
     return this._http.get<ParkingLot[]>(this.Endpoint + this.complement);
   }
   
-  public getParkingLot(parkingLot: ParkingLot): Observable<ParkingLot> {
-    return this._http.get<ParkingLot>(`${this.Endpoint}${this.complement}obtener`);
+  public getParkingLot(id: string): Observable<ParkingLot> {
+    return this._http.get<ParkingLot>(`${this.Endpoint}${this.complement}/obtener/${id}`);
   }
  
   public AddParkingLot(parkingLot: ParkingLot): Observable<ParkingLot> {

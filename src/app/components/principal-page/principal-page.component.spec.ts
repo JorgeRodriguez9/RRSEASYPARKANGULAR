@@ -7,7 +7,7 @@ describe('PrincipalPageComponent', () => {
   let fixture: ComponentFixture<PrincipalPageComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
+    TestBed.configureTestingModule({ 
       declarations: [PrincipalPageComponent]
     });
     fixture = TestBed.createComponent(PrincipalPageComponent);

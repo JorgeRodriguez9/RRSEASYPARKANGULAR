@@ -68,8 +68,7 @@ constructor(private _ParkingLotService:ParkingLotService, private _CityService:C
       }) 
   }
   reserva(element: any) {
-    const encodedElement = encodeURIComponent(JSON.stringify(element));
-    this.router.navigate(['/Reservation/', encodedElement]);
+        this.router.navigate([`/Reservation/${element.id}`]);
   }
  AddParkingLot() {
   const model: ParkingLot = {
