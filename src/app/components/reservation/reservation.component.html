@@ -2,8 +2,8 @@
   <h1>Reservas</h1>
 </div>
 
-<div class="centered-text">
-  <h1></h1>
+<div class="centered-text" *ngIf = "parking != undefined">
+  <h1>{{parking.name}}</h1>
 </div>
 
 <div class="container" *ngIf = "parking != undefined">
@@ -43,6 +43,18 @@
         <p>
           {{parking.info}}
         </p>
+        <div style="display: flex; justify-content: space-between;">
+          <div style="width: 45%;">
+            <p>Telefono: {{parking.telephone}} </p>
+            <p>Precio: {{parking.normalPrice}} </p>
+            <p *ngIf="parking.disabilityservices === 'SI'">Precio Discapacitados: {{parking.disabilityPrice}} </p>
+          </div>
+          <div style="width: 45%;">
+            <p>parq. Moto: {{parking.cantSpacesMotorcycle}}</p>
+            <p>parq. Carro: {{parking.cantSpacesCar}} </p>
+            <p *ngIf="parking.disabilityservices === 'SI'">parq. Discapacitados: {{parking.cantSpacesDisability}} </p>
+          </div>
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>LIKE</button>
