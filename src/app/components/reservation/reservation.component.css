@@ -1,0 +1,40 @@
+.centered-text {
+    text-align: center;
+    margin-top: 1%;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .column1{
+    margin-top: 6%;
+  }
+  
+  .column {
+    width: 48%; /* Ajusta el ancho de cada columna según sea necesario */
+    margin-left: 10%;
+   
+  }
+  
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .title {
+      padding: 30px;
+      background-color: #0d3a14;
+      text-align: center;
+      color: rgb(255, 255, 255)
+    }

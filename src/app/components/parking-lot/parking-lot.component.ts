@@ -7,6 +7,7 @@ import { CityService } from '../../service/city/city.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Router } from '@angular/router';
 import { Tile } from 'Interfaces/Tile';
 
 
@@ -28,6 +29,7 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   public list : ParkingLot[] = [];
   public ListCities : City[] = [];
   
+  
   dataSource = new MatTableDataSource<ParkingLot>();
   displayedColumns: string[] = ['Icon','Name', 'Adress', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
@@ -41,28 +43,35 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   cityform!: FormGroup;
   form!: FormGroup;
 
-constructor(private _ParkingLotService:ParkingLotService, private _CityService:CityService, private formBuilder: FormBuilder, private fb: FormBuilder){ 
+constructor(private _ParkingLotService:ParkingLotService, private _CityService:CityService, private formBuilder: FormBuilder, private fb: FormBuilder,
+  private router: Router)
+{ 
   
-  this.cityform = this.fb.group({
-    selectedCity: [''],
-    filterValue: [''],
-    disabilityservice: ['']
-  });
+  
+    this.cityform = this.fb.group({
+      selectedCity: [''],
+      filterValue: [''],
+      disabilityservice: ['']
+    });
 
-  this.form = this.formBuilder.group({
-    name: [''],
-    adress:[''],
-    nit:[''],
-    telephone:[''],
-    normalPrice:[''],
-    disabilityPrice:[''],
-    info:[''],
-    cantSpacesMotorcycle: [''],
-    cantSpacesCar: [''], 
-    cantSpacesDisability: ['']
-    }) 
-}
-AddParkingLot() {
+    this.form = this.formBuilder.group({
+      name: [''],
+      adress:[''],
+      nit:[''],
+      telephone:[''],
+      normalPrice:[''],
+      disabilityPrice:[''],
+      info:[''],
+      cantSpacesMotorcycle: [''],
+      cantSpacesCar: [''], 
+      cantSpacesDisability: ['']
+      }) 
+  }
+  reserva(element: any) {
+    const encodedElement = encodeURIComponent(JSON.stringify(element));
+    this.router.navigate(['/Reservation/', encodedElement]);
+  }
+ AddParkingLot() {
   const model: ParkingLot = {
     id: "",
     name: this.form.value.name,

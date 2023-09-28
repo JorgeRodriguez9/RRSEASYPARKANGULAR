@@ -1,7 +1,20 @@
+.buttons-container {
+  top: 10px; /* Ajusta la posición vertical según sea necesario */
+  flex-direction: column; /* Coloca los botones en una columna vertical */
+  margin-left: 1px;
+}
+.buttons-container button {
+  margin-bottom: 10px; /* Espacio entre los botones */
+}
 .container {
   margin: 0 20%;
 }
-
+.column {
+  width: 108%; /* Ajusta el ancho de cada columna según sea necesario */
+}
+.column2{
+  width: 30%; /* Ajusta el ancho de cada columna según sea necesario */
+}
 .mat-mdc-form-field {
   font-size: 14px;
   width: 100%;
@@ -58,7 +71,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-detail {
   overflow: hidden;
-  /*display: flex;*/
+  position: relative;
+  display: flex;
 }
 
 .example-element-description {
