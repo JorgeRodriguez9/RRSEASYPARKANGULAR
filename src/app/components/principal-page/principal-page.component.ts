@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./principal-page.component.css']
 })
 export class PrincipalPageComponent {
-
+images:string="assets/images/Logo.jpg"; 
 }

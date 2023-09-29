@@ -1,1 +1,59 @@
-<p>principal-page works!</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRSEASYPARK</title>
+    <link rel="principal-page" href="principal-page.component.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="menu container">
+            <div class="logo">
+                <img [src]="images" alt="My image">
+            </div>
+            <input type="checkbox" id="menu" />
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Reservas</a></li>
+                    <li><a href="#">Parqueaderos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>Reserva tu <span>Parqueadero</span> <br> favorito aqui </h1>
+                <h2>
+                    El propósito de RRS EasyPark es implementar un sistema de reserva
+                    de parqueaderos que brinde una solución eficiente y equitativa tanto para
+                    personas normales como para personas discapacitadas. El sistema se diseñará
+                    para optimizar la utilización del espacio de estacionamiento disponible,
+                    asegurando que todas las personas tengan acceso a parqueaderos adecuados
+                    y garantizando la inclusión y comodidad de personas con discapacidades.
+                    Además, el sistema tiene como objetivo mejorar la experiencia de
+                    estacionamiento al reducir el estrés y la incertidumbre asociados con la
+                    búsqueda de espacios vacíos!
+                </h2>
+                <div class="butons">
+                    <a href="#" class="btn-1">Informacion</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact container">
+        <div class="contact-content">
+            <h3>Subscribete a nuestra pagina</h3>
+            <form>
+                <input type="email" placeholder="Escribe tu correo">
+                <input type="submit" class="btn-3" value="Enviar">
+            </form>
+        </div>
+
+            
+    </section>
