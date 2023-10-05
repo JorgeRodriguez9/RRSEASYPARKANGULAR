@@ -2,5 +2,10 @@ export interface Reservation {
     id: string;
     date: Date;
     totalPrice: number;
-    Disable: string;
+    disabled: string;
+    clientId: string; 
+    clientName: string;
+    telephone: string;
+    typeVehicleId: string;
+    parkingLotId: string;
 }

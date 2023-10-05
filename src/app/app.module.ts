@@ -25,6 +25,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { ViewReservationComponent } from './components/view-reservation/view-reservation.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -32,7 +38,9 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     ParkingLotComponent,
     PrincipalPageComponent,
-    ReservationComponent
+    ReservationComponent,
+    SideNavComponent,
+    ViewReservationComponent
   ],
   imports: [
     NgFor,
@@ -54,7 +62,11 @@ import { FormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonToggleModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

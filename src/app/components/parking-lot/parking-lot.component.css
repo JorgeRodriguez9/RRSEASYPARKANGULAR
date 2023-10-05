@@ -1,3 +1,6 @@
+.br{
+  margin-top: 5px;
+}
 .buttons-container {
   top: 10px; /* Ajusta la posición vertical según sea necesario */
   flex-direction: column; /* Coloca los botones en una columna vertical */

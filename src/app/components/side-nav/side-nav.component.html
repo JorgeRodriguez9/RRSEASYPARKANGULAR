@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>RRS EASYPARK</h1>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer mode="side" opened class="custom-drawer">
+        <mat-list role="list">
+            <mat-list-item role="listitem" routerLink="/Reservation" routerLinkActive="active" class="menu-item">
+                {{"RESERVAS" | titlecase}}
+            </mat-list-item>
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <ng-content></ng-content>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+
+  
+
