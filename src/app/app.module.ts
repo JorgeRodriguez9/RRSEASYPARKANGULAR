@@ -54,7 +54,8 @@ import { FormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
