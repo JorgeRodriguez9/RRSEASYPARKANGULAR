@@ -27,7 +27,7 @@
   }
   
   .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url('src\app\components\reservation\imagen\imagen_parqueadero.jpg');
     background-size: cover;
   }
 

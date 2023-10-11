@@ -9,6 +9,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { Tile } from 'Interfaces/Tile';
+import { AuthService } from 'src/app/service/auth/auth.service';
+import { User } from 'Models/User';
 
 
 @Component({
@@ -34,6 +36,7 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['Icon','Name', 'Adress', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement!: ParkingLotComponent | null;
+  user!: User | null;
   
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;//! le estamos diciendo que no es nulo
@@ -44,8 +47,15 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   form!: FormGroup;
 
 constructor(private _ParkingLotService:ParkingLotService, private _CityService:CityService, private formBuilder: FormBuilder, private fb: FormBuilder,
-  private router: Router)
+  private router: Router, private _apiAuth: AuthService)
 { 
+  this._apiAuth.useer.subscribe(res => {
+    this.user = res;
+    console.log('cambio el objeto ' + res); 
+    console.log(this.user);   
+  });
+
+
   
   
     this.cityform = this.fb.group({
@@ -69,6 +79,9 @@ constructor(private _ParkingLotService:ParkingLotService, private _CityService:C
   }
   reserva(element: any) {
         this.router.navigate([`/Reservation/${element.id}`]);
+  }
+  obtenerinfo(){
+    this._apiAuth.getTokenUserInfo();
   }
  AddParkingLot() {
   const model: ParkingLot = {
@@ -103,6 +116,7 @@ constructor(private _ParkingLotService:ParkingLotService, private _CityService:C
 ngOnInit(): void {
   this.getParkingLots();
   this.getCity();
+  this.obtenerinfo();
 }
 ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
@@ -112,6 +126,10 @@ getParkingLots(){
 }
 getCity(){
   this._CityService.getCity().subscribe(response =>{ this.ListCities = response;});
+}
+logout(){
+  this._apiAuth.logout();
+  this.router.navigate(['/Login']);
 }
 /*
 applyFilter(event: Event) {
