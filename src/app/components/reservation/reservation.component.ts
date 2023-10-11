@@ -26,16 +26,8 @@ export class ReservationComponent {
   id!: string;
   park!: ParkingLot
   parking!: ParkingLot;
-  
-  public reservationform = new FormGroup({
-    id: new FormControl(''),
-    startdate: new FormControl(''),
-    enddate: new FormControl(''),
-    totalPrice: new FormControl(''),
-    Disable: new FormControl(''),
-    parkingType: new FormControl(''),
-    vehicleType: new FormControl('')
-  });
+  reservationform: FormGroup;
+  totalprice!: number;
 
   dataSource = new MatTableDataSource<Reservation>();
   displayedColumns: string[] = ['startdate', 'enddate', 'totalPrice', 'Disable', 'parkingType', 'vehicleType'];
@@ -45,14 +37,16 @@ export class ReservationComponent {
   //para que pueda ser utilizado y manipulado en el componente donde se encuentra esta declaración
 
   UpdateList(NewValue: any) {
+    
     console.log(NewValue)
     if (NewValue == "SI") {
       this.ListVehiclesFilter = this.ListVehicles.filter(x => x.disabilityEnable === true)
+      //this.totalprice = this.parking.disabilityPrice
     } else {
       this.ListVehiclesFilter = this.ListVehicles
+      //this.totalprice = this.parking.normalPrice
     }
   }
-
   constructor(private _typeVehicle: TypeVehicleService, private _ReservationService: ReservationService, private route: ActivatedRoute, private router: Router, private _parkingLot: ParkingLotService, private formBuilder: FormBuilder, private fb: FormBuilder) {
 
     this.reservationform = this.fb.group({
@@ -63,58 +57,58 @@ export class ReservationComponent {
       vehicleType: ['']
     })
   }
-    AddReservation() {
-      
-      let startdate = this.reservationform.value.startdate? new Date(this.reservationform.value.startdate):new Date();
-      let enddate = this.reservationform.value.enddate? new Date(this.reservationform.value.enddate):new Date();
-      const model: Reservation = {
-        startdate: startdate,
-        enddate: enddate,
-        parkingType: "",
-        vehicleType: "",
-        id: '',
-        totalPrice: 0,
-        Disable: ''
+  AddReservation() {
+
+    let startdate = this.reservationform.value.startdate ? new Date(this.reservationform.value.startdate) : new Date();
+    let enddate = this.reservationform.value.enddate ? new Date(this.reservationform.value.enddate) : new Date();
+    const model: Reservation = {
+      startdate,
+      enddate,
+      disability: this.reservationform.value.parkingType,
+      vehicleType: this.reservationform.value.vehicleType,
+      id: '',
+      totalPrice: this.totalprice,
+      parkingLotId: this.parking.id?? ""
+    }
+    console.log(model);
+    this._ReservationService.AddReservation(model).subscribe(
+      {
+
+        next: (data) => {
+          console.log(data);
+        }, error: (e) => { }
+
       }
-      console.log(model);
-      this._ReservationService.AddReservation(model).subscribe(
-        {
+    )
 
-          next: (data) => {
-            console.log(data);
-          }, error: (e) => { }
+    //this.aRoute.paramMap.subscribe(params => {
+    // const elementJson = params.get('id');
+    // if(elementJson){
+    //  const element = JSON.parse(decodeURIComponent(elementJson));
+    //  this.id = element;
+    //}
 
-        }
-      )
-
-      //this.aRoute.paramMap.subscribe(params => {
-      // const elementJson = params.get('id');
-      // if(elementJson){
-      //  const element = JSON.parse(decodeURIComponent(elementJson));
-      //  this.id = element;
-      //}
-
-      // });
-
-    }
-    ngOnInit(): void {
-      this.getTypeVehicle();
-
-      this.route.params.subscribe(params => {
-        this.id = params['id']
-      })
-
-      this.getParkingLot();
-
-    }
-    getTypeVehicle() {
-      this._typeVehicle.getTypeVehicle().subscribe(response => { this.ListVehicles = response; this.ListVehiclesFilter = this.ListVehicles });
-    }
-
-    getParkingLot() {
-      this._parkingLot.getParkingLot(this.id).subscribe(data => {
-        this.parking = data;
-      })
-    }
+    // });
 
   }
+  ngOnInit(): void {
+    this.getTypeVehicle();
+
+    this.route.params.subscribe(params => {
+      this.id = params['id']
+    })
+
+    this.getParkingLot();
+
+  }
+  getTypeVehicle() {
+    this._typeVehicle.getTypeVehicle().subscribe(response => { this.ListVehicles = response; this.ListVehiclesFilter = this.ListVehicles });
+  }
+
+  getParkingLot() {
+    this._parkingLot.getParkingLot(this.id).subscribe(data => {
+      this.parking = data;
+    })
+  }
+
+}
