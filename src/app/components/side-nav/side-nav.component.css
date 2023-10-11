@@ -1,0 +1,43 @@
+.example-container {
+    flex-grow: 2;
+    z-index: 1;
+    min-height: 100vh;
+    flex-direction: column;
+ 
+
+  }
+.container{
+    align-items: center;
+}
+  .custom-drawer {
+    background-color: #f0f0f0; /* Cambia el color de fondo según tu preferencia */
+    /* Otros estilos personalizados aquí */
+    width: 150px;
+}
+
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  
+    .user-info {
+      display: flex;
+      align-items: center;
+      span {
+        margin-right: 0.5rem;
+      }
+      mat-icon {
+        transform: scale(1.4);
+      }
+    }
+  }
+  
+
+.menu-item {
+    transition: background-color 0.3s; /* Transición suave al cambiar el fondo */
+}
+
+.menu-item:hover {
+    background-color: #ddd; /* Color de fondo cuando el cursor está sobre el elemento */
+    cursor: pointer;
+}
+
