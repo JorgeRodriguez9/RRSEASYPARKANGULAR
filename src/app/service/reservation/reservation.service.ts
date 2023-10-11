@@ -18,4 +18,8 @@ export class ReservationService {
     return this._http.get<Reservation[]>(this.Endpoint + this.complement);
   }
 
+  public AddReservation(reservation: Reservation): Observable<Reservation> {
+    return this._http.post<Reservation>(this.Endpoint + this.complement, reservation);
+  } 
+
 }

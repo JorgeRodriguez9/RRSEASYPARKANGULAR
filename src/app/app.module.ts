@@ -69,6 +69,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatNativeDateModule,
     MatCardModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatListModule,
     MatButtonToggleModule,

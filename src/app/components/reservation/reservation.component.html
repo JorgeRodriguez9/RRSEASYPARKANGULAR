@@ -8,56 +8,75 @@
 
 <div class="container" *ngIf="parking != undefined">
   <div class="column column1">
-        
-    <div class="form-group">
-      <label for="birthdaytime" class="form-label">Fecha y hora:</label>
-      <input type="datetime-local" id="birthdaytime" name="birthdaytime" class="form-control">
-    </div>
 
-    <mat-form-field class = "space">
-      <mat-label>Tipos de parqueaderos:</mat-label>
-      <mat-select>
-        <mat-option value="SI">DISCAPACITADOS</mat-option>
-        <mat-option value="NO">NORMALES</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Tipo de Vehiculo</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let TypoVehicle of ListVehicles" value={{TypoVehicle.id}}>{{TypoVehicle.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="column">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://www.metrodemedellin.gov.co/hubfs/Imported_Blog_Media/Parqueadero-ayura-530x300.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          {{parking.info}}
-        </p>
-        <div style="display: flex; justify-content: space-between;">
-          <div style="width: 45%;">
-            <p>Telefono: {{parking.telephone}} </p>
-            <p>Precio: {{parking.normalPrice}} </p>
-            <p *ngIf="parking.disabilityservices === 'SI'">Precio Discapacitados: {{parking.disabilityPrice}} </p>
-          </div>
-          <div style="width: 45%;">
-            <p>parq. Moto: {{parking.cantSpacesMotorcycle}}</p>
-            <p>parq. Carro: {{parking.cantSpacesCar}} </p>
-            <p *ngIf="parking.disabilityservices === 'SI'">parq. Discapacitados: {{parking.cantSpacesDisability}} </p>
-          </div>
+    <div class="container">
+      <form [formGroup]="reservationform" (ngSubmit)="AddReservation()">
+        <div class="form-group">
+          <label for="startdate" class="form-label">Fecha y hora inicio:</label>
+          <input type="datetime-local" formControlName="startdate" name="startdate" class="form-control">
         </div>
-      </mat-card-content>
-      <mat-card-actions>
 
-      </mat-card-actions>
-    </mat-card>
-      
+        <div class="form-group space">
+          <label for="enddate" class="form-label">Fecha y hora fin:</label>
+          <input type="datetime-local" formControlName="enddate" id="enddate" name="enddate">
+        </div>
+
+        <mat-form-field class="space" *ngIf="parking.disabilityservices === 'SI'">
+          <mat-label>Tipos de parqueaderos:</mat-label>
+          <mat-select formControlName="parkingType" value="NO" (valueChange)="UpdateList($event)">
+            <mat-option value="SI">DISCAPACITADOS</mat-option>
+            <mat-option value="NO">NORMALES</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="space">
+          <mat-label>Tipo de Vehiculo</mat-label>
+          <mat-select formControlName="vehicleType">
+            <mat-option *ngFor="let TypoVehicle of ListVehiclesFilter"
+              value={{TypoVehicle.id}}>{{TypoVehicle.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button Type="submit" [disabled]="!reservationform.valid" mat-raised-button>Agendar </button>
+      </form>
+      <div>
+        <button class="marginLeft color-age" mat-fab extended>
+          <mat-icon>calendar_month</mat-icon>
+          Reservación
+        </button>
+      </div>
+
+      <div class="column">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>
+              <h1>{{parking.name}}</h1>
+            </mat-card-title>
+          </mat-card-header>
+          <img mat-card-image
+            src="https://caracol.com.co/resizer/YyFwb-lb2JBkusnJCFNEKJRbL-o=/3800x2533/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/5NFZVFIIOJFWBNOWI73OOVTFLU.jpg"
+            alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              {{parking.info}}
+            </p>
+            <div style="display: flex; justify-content: space-between;">
+              <div style="width: 45%;">
+                <p>Telefono: {{parking.telephone}} </p>
+                <p>Precio: {{parking.normalPrice}} </p>
+                <p *ngIf="parking.disabilityservices === 'SI'">Precio Discapacitados: {{parking.disabilityPrice}} </p>
+              </div>
+              <div style="width: 45%;">
+                <p>parq. Moto: {{parking.cantSpacesMotorcycle}}</p>
+                <p>parq. Carro: {{parking.cantSpacesCar}} </p>
+                <p *ngIf="parking.disabilityservices === 'SI'">parq. Discapacitados: {{parking.cantSpacesDisability}}
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
   </div>
 </div>
