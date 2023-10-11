@@ -7,14 +7,15 @@
   background-color: #73af7c;
   color: white;
 }
-  .example-card {
-    max-width: 400px;
-  }
-  
-  .example-header-image {
-    background-image: url('src\app\components\reservation\imagen\imagen_parqueadero.jpg');
-    background-size: cover;
-  }
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('src\app\components\reservation\imagen\imagen_parqueadero.jpg');
+  background-size: cover;
+}
 
 .column1 {
   margin-top: 6%;
