@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParkingLotComponent } from './components/parking-lot/parking-lot.component';
@@ -31,6 +31,10 @@ import { MatListModule } from '@angular/material/list';
 import { ViewReservationComponent } from './components/view-reservation/view-reservation.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { LoginComponent } from './components/login/login.component';
+import { JwtInteceptor } from './security/jwt.interceptor';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -40,7 +44,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     PrincipalPageComponent,
     ReservationComponent,
     SideNavComponent,
-    ViewReservationComponent
+    ViewReservationComponent,
+    LoginComponent,
+    UnauthorizedComponent
   ],
   imports: [
     NgFor,
@@ -66,9 +72,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatSidenavModule,
     MatListModule,
     MatButtonToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInteceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

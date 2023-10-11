@@ -5,14 +5,20 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { PrincipalPageComponent } from './components/principal-page/principal-page.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { ViewReservationComponent } from './components/view-reservation/view-reservation.component';
+import { AuthGuard } from './security/auth.guard';
+import { LoginComponent } from './components/login/login.component';
+import { RoleGuard } from './security/role.guard';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 
 const routes: Routes = [
-  {path: 'ParkingLot', component:ParkingLotComponent},
-  {path: 'Reservation/:id', component:ReservationComponent},
+  {path: 'ParkingLot', component:ParkingLotComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Client' }},
+  {path: 'Reservation/:id', component:ReservationComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Client' }},
   {path: 'PrincipalPage', component:PrincipalPageComponent},
-  {path: 'SideNav', component:SideNavComponent},
-  {path: 'Reservation', component:ViewReservationComponent}
+  {path: 'SideNav', component:SideNavComponent, canActivate : [AuthGuard]},
+  {path: 'Reservation', component:ViewReservationComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
+  {path: 'Login', component:LoginComponent},
+  {path: 'Unauthorized', component:UnauthorizedComponent},
 ];
 
 @NgModule({

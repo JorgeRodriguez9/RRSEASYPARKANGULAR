@@ -22,8 +22,11 @@
 
   </h1>
 </div>
-<app-side-nav>
-  
+<div>
+
+      <button (click) = "logout()" *ngIf="user">Cerrar Sesion</button>
+        
+</div>
   
   <div class="container">
     <form [formGroup]="cityform">
@@ -127,8 +130,10 @@
   
     <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
     </mat-paginator>
+  
   </div>
-</app-side-nav>
+
+ 
 
 
 

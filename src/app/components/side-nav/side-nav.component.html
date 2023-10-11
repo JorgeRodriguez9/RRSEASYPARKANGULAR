@@ -3,6 +3,22 @@
         <mat-icon>menu</mat-icon>
     </button>
     <h1>RRS EASYPARK</h1>
+    <div class="user-info">
+        <span>
+            Hola,
+            {{this.user?.Name | titlecase}}
+        </span>
+        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+    </div>
+
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="logOut()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar Sesion</span>
+        </button>
+    </mat-menu>
 </mat-toolbar>
 <mat-drawer-container class="example-container">
     <mat-drawer #drawer mode="side" opened class="custom-drawer">
