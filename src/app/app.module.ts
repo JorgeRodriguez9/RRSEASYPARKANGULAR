@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+//import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParkingLotComponent } from './components/parking-lot/parking-lot.component';
@@ -25,6 +25,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 @NgModule({
@@ -32,7 +36,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     ParkingLotComponent,
     PrincipalPageComponent,
-    ReservationComponent
+    ReservationComponent,
+    LoginComponent,
   ],
   imports: [
     NgFor,
@@ -40,6 +45,13 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,   
     AppRoutingModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
     BrowserAnimationsModule,
     MatInputModule,
     ReactiveFormsModule,
@@ -60,3 +72,8 @@ import { FormsModule } from '@angular/forms';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// AOT compilation support
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

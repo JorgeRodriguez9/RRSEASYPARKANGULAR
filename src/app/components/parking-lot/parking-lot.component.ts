@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { Tile } from 'Interfaces/Tile';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -34,6 +35,8 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['Icon','Name', 'Adress', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement!: ParkingLotComponent | null;
+
+  
   
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;//! le estamos diciendo que no es nulo
@@ -44,9 +47,14 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   form!: FormGroup;
 
 constructor(private _ParkingLotService:ParkingLotService, private _CityService:CityService, private formBuilder: FormBuilder, private fb: FormBuilder,
-  private router: Router)
+  private router: Router,private translate: TranslateService)
 { 
   
+    translate.addLangs(['en', 'es']);
+    const lang = translate.getBrowserLang()
+    if( (lang !== 'es') && ( lang !== 'en') ){
+      translate.setDefaultLang('en');
+    }
   
     this.cityform = this.fb.group({
       selectedCity: [''],
@@ -83,6 +91,7 @@ constructor(private _ParkingLotService:ParkingLotService, private _CityService:C
     cantSpacesMotorcycle: this.form.value.cantSpacesMotorcycle,
     cantSpacesCar: this.form.value.cantSpacesCar,
     cantSpacesDisability: this.form.value.cantSpacesDisability,
+    images: "",
     disabilityservices: this.form.value.disabilityservices,
     cityId: "",
     cityName: "",

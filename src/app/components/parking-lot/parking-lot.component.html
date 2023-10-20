@@ -23,7 +23,20 @@
 
   </h1>
 </div>
-
+<!--
+<span>
+  <select 
+     
+      #selectedLang 
+      (change)="parking-lot(selectedLang.value)">
+    <option *ngFor="let language of translate.getLangs()" 
+      [value]="language"
+      [selected]="language === translate.currentLang">
+      {{ language }}
+    </option>
+  </select>
+</span>
+-->
 <div class="container">
   <form [formGroup]="cityform">
     <mat-form-field>
