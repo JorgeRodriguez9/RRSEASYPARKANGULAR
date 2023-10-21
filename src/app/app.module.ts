@@ -35,6 +35,7 @@ import { LoginComponent } from './components/login/login.component';
 import { JwtInteceptor } from './security/jwt.interceptor';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { RegisterParkinglotComponent } from './components/register-parkinglot/register-parkinglot.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {MatMenuModule} from '@angular/material/menu';
     SideNavComponent,
     ViewReservationComponent,
     LoginComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    RegisterParkinglotComponent
   ],
   imports: [
     NgFor,
