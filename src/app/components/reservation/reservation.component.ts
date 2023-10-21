@@ -37,7 +37,7 @@ export class ReservationComponent {
   //para que pueda ser utilizado y manipulado en el componente donde se encuentra esta declaración
 
   UpdateList(NewValue: any) {
-    
+
     console.log(NewValue)
     if (NewValue == "SI") {
       this.ListVehiclesFilter = this.ListVehicles.filter(x => x.disabilityEnable === true)
@@ -48,67 +48,79 @@ export class ReservationComponent {
     }
   }
   constructor(private _typeVehicle: TypeVehicleService, private _ReservationService: ReservationService, private route: ActivatedRoute, private router: Router, private _parkingLot: ParkingLotService, private formBuilder: FormBuilder, private fb: FormBuilder) {
+   
+      this.reservationform = this.fb.group({
 
-    this.reservationform = this.fb.group({
-
-      startdate: [''],
-      enddate: [''],
-      parkingType: [''],
-      vehicleType: ['']
-    })
+        date: [''],
+        starttime: [''],
+        endtime: [''],
+        parkingType: [''],
+        vehicleType: ['']
+      })
+   
   }
-  AddReservation() {
+    AddReservation() {
 
-    let startdate = this.reservationform.value.startdate ? new Date(this.reservationform.value.startdate) : new Date();
-    let enddate = this.reservationform.value.enddate ? new Date(this.reservationform.value.enddate) : new Date();
-    const model: Reservation = {
-      startdate,
-      enddate,
-      disability: this.reservationform.value.parkingType,
-      vehicleType: this.reservationform.value.vehicleType,
-      id: '',
-      totalPrice: this.totalprice,
-      parkingLotId: this.parking.id?? ""
-    }
-    console.log(model);
-    this._ReservationService.AddReservation(model).subscribe(
-      {
+      let date = this.reservationform.value.date ? new Date(this.reservationform.value.date) : new Date();
+      let starttime = this.reservationform.value.starttime.toString()+":00"
+      console.log (starttime)
+      let endtime = this.reservationform.value.endtime.toString()+":00"
+      console.log (endtime)
+      console.log ("Hola")
+      console.log ((date.getDate()+1)+"/"+(date.getMonth()+1)+"/"+date.getFullYear())
 
-        next: (data) => {
-          console.log(data);
-        }, error: (e) => { }
-
+      const model: Reservation = {
+        date: (date.getMonth()+1)+"-"+(date.getDate()+1)+"-"+date.getFullYear(),
+        starttime,
+        endtime,
+        disability: this.reservationform.value.parkingType,
+        vehicleType: this.reservationform.value.vehicleType,
+        id: '',
+        totalPrice: this.totalprice,
+        parkingLotId: this.parking.id ?? ""
       }
-    )
+      console.log(model);
+      this._ReservationService.AddReservation(model).subscribe(
+        {
 
-    //this.aRoute.paramMap.subscribe(params => {
-    // const elementJson = params.get('id');
-    // if(elementJson){
-    //  const element = JSON.parse(decodeURIComponent(elementJson));
-    //  this.id = element;
-    //}
+          next: (data) => {
+            console.log(data);
+          }, error: (e) => {alert(e.error)}
 
-    // });
+        }
+      )
 
-  }
-  ngOnInit(): void {
-    this.getTypeVehicle();
+      //this.aRoute.paramMap.subscribe(params => {
+      // const elementJson = params.get('id');
+      // if(elementJson){
+      //  const element = JSON.parse(decodeURIComponent(elementJson));
+      //  this.id = element;
+      //}
 
-    this.route.params.subscribe(params => {
-      this.id = params['id']
-    })
+      // });
+
+    }
+    ngOnInit(): void {
+      this.getTypeVehicle();
+
+      this.route.params.subscribe(params => {
+        this.id = params['id']
+      })
 
     this.getParkingLot();
 
-  }
-  getTypeVehicle() {
-    this._typeVehicle.getTypeVehicle().subscribe(response => { this.ListVehicles = response; this.ListVehiclesFilter = this.ListVehicles });
-  }
+    }
+    getTypeVehicle() {
+      this._typeVehicle.getTypeVehicle().subscribe(response => { this.ListVehicles = response; this.ListVehiclesFilter = this.ListVehicles });
+    }
 
-  getParkingLot() {
-    this._parkingLot.getParkingLot(this.id).subscribe(data => {
-      this.parking = data;
-    })
-  }
+    getParkingLot() {
+      this._parkingLot.getParkingLot(this.id).subscribe(data => {
+        this.parking = data;
+        if (this.parking.disabilityservices == "NO") {
+          this.reservationform.get('parkingType')?.setValue("NO")
+        }
+      })
+    }
 
-}
+  }
