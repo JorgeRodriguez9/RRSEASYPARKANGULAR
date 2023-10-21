@@ -9,6 +9,7 @@ import { AuthGuard } from './security/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { RoleGuard } from './security/role.guard';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { RegisterParkinglotComponent } from './components/register-parkinglot/register-parkinglot.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'PrincipalPage', component:PrincipalPageComponent},
   {path: 'SideNav', component:SideNavComponent, canActivate : [AuthGuard]},
   {path: 'Reservation', component:ViewReservationComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
+  {path: 'RegisterParkingLot', component:RegisterParkinglotComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
   {path: 'Login', component:LoginComponent},
   {path: 'Unauthorized', component:UnauthorizedComponent},
 ];

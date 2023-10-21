@@ -62,18 +62,7 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
       disabilityservice: ['']
     });
 
-    this.form = this.formBuilder.group({
-      name: [''],
-      adress: [''],
-      nit: [''],
-      telephone: [''],
-      normalPrice: [''],
-      disabilityPrice: [''],
-      info: [''],
-      cantSpacesMotorcycle: [''],
-      cantSpacesCar: [''],
-      cantSpacesDisability: ['']
-    })
+    
   }
   reserva(element: any) {
     this.router.navigate([`/Reservation/${element.id}`]);
@@ -81,33 +70,7 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   obtenerinfo() {
     this._apiAuth.getTokenUserInfo();
   }
-  AddParkingLot() {
-    const model: ParkingLot = {
-      id: "",
-      name: this.form.value.name,
-      adress: this.form.value.adress,
-      nit: this.form.value.nit,
-      telephone: this.form.value.telephone,
-      normalPrice: this.form.value.normalPrice,
-      disabilityPrice: this.form.value.disabilityPrice,
-      info: this.form.value.info,
-      cantSpacesMotorcycle: this.form.value.cantSpacesMotorcycle,
-      cantSpacesCar: this.form.value.cantSpacesCar,
-      cantSpacesDisability: this.form.value.cantSpacesDisability,
-      disabilityservices: this.form.value.disabilityservices,
-      cityId: "",
-      cityName: "",
-      propietaryParkId: ""
-    }
-    console.log(model);
-    this._ParkingLotService.AddParkingLot(model).subscribe(
-      {
-
-        next: (data) => {
-          console.log(data);
-        }, error: (e) => { }
-      })
-  }
+ 
 
   ngOnInit(): void {
     this.getParkingLots();
