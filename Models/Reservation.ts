@@ -1,7 +1,10 @@
+import { Time } from "@angular/common";
+
 export interface Reservation {
     id: string;
-    startdate: Date;
-    enddate: Date;
+    date: string;
+    starttime: string;
+    endtime: string;
     totalPrice: number;  
     vehicleType: string;
     parkingLotId: string;    

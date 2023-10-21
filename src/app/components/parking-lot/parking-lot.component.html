@@ -47,7 +47,7 @@
         <mat-select formControlName="disabilityservice" (selectionChange)="applyCityFilter()">
           <mat-option value="">Todos</mat-option>
           <mat-option value="SI">DISCAPACITADOS</mat-option>
-          <mat-option value="NO">NORMALES</mat-option>
+          <mat-option value="NO">GENERAL</mat-option>
         </mat-select>
       </mat-form-field>
     </form>
@@ -100,11 +100,11 @@
                   <p *ngIf="element.disabilityservices === 'SI'">Precio Discapacitados: {{element.disabilityPrice}} </p>
                 </div>
               </div>
-              <div class="description info-line2"> 
+              <!-- <div class="description info-line2"> 
                 <p>parq. Moto: {{element.cantSpacesMotorcycle}}</p>
                 <p>parq. Carro: {{element.cantSpacesCar}} </p>
                 <p *ngIf="element.disabilityservices === 'SI'">parq. Discapacitados: {{element.cantSpacesDisability}} </p>
-              </div> 
+              </div>  -->
             </div>
             <div class="column2 buttons-container">
               <button mat-fab extended color="primary" (click)="reserva(element)">
