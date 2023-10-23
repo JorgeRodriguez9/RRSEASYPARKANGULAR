@@ -36,6 +36,7 @@ import { JwtInteceptor } from './security/jwt.interceptor';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { RegisterParkinglotComponent } from './components/register-parkinglot/register-parkinglot.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { RegisterParkinglotComponent } from './components/register-parkinglot/re
     MatListModule,
     MatButtonToggleModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInteceptor, multi: true}
