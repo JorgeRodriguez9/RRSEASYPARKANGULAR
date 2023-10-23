@@ -4,6 +4,7 @@ import { City } from 'Models/City';
 import { ParkingLot } from 'Models/ParkingLot';
 import { CityService } from 'src/app/service/city/city.service';
 import { ParkingLotService } from 'src/app/service/parkingLot/parking-lot.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register-parkinglot',
@@ -24,7 +25,7 @@ export class RegisterParkinglotComponent implements OnInit {
 
 
 
-  constructor(private _CityService: CityService, private _ParkingLotService: ParkingLotService,private fb: FormBuilder) {
+  constructor(private _CityService: CityService, private _ParkingLotService: ParkingLotService,private fb: FormBuilder, private _snackBar: MatSnackBar) {
     this.form = this.fb.group({
       name: [''],
       adress: [''],
@@ -94,7 +95,7 @@ export class RegisterParkinglotComponent implements OnInit {
       cantSpacesCar: this.form.value.cantSpacesCar,
       cantSpacesDisability: this.form.value.cantSpacesDisability,
       disabilityservices: this.form.value.disabilityservices,
-      image: JSON.stringify(this.imagen[0]),
+      image: this.imagen[0],
       cityId: this.form.value.cityId,
       cityName: "",
       propietaryParkId: ""
@@ -105,7 +106,22 @@ export class RegisterParkinglotComponent implements OnInit {
 
         next: (data) => {
           console.log(data);
-        }, error: (e) => { }
+
+          // Mostrar el mensaje de éxito
+        this._snackBar.open('Parqueadero registrado correctamente', 'Cerrar', {
+          duration: 3000, // Duración del mensaje (3 segundos)
+        });
+
+        // Limpiar el formulario después del registro exitoso
+        this.form.reset();
+        this.select = false;
+        this.select2 = false;
+        }, error: (e) => {
+          console.error(e);
+          this._snackBar.open('Parqueadero no registrado correctamente', 'Cerrar', {
+            duration: 3000, // Duración del mensaje (3 segundos)
+          });
+         }
       })
   }
  
