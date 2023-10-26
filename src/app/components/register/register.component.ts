@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ClientParkingLotPost } from 'Models/ClientParkingLotPost';
 import { Login } from 'Models/Login';
@@ -18,9 +19,11 @@ export class RegisterComponent {
   showPassword = false;
   password: string = '';
   form: FormGroup;
-  id! : string;
 
-  constructor(private fb: FormBuilder, private _clientService: ClientService, private _propietaryService: PropietaryParkService, private _apiauth: AuthService, private _rolService: RolserviceService, private _router: Router) {
+  id!: string;
+
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private _clientService: ClientService, private _propietaryService: PropietaryParkService, private _apiauth: AuthService, private _rolService: RolserviceService, private _router: Router) {
+
     this.form = this.fb.group({
       name: [''],
       email: [''],
@@ -35,80 +38,110 @@ export class RegisterComponent {
   register() {
     const rol = this.form.value.rol;
 
-    if (rol === "Client") {
-      const model: ClientParkingLotPost = {
-        name: this.form.value.name,
-        identification: this.form.value.identification,
-        email: this.form.value.email,
-        telephone: this.form.value.telephone,
-        nameUser: this.form.value.nameUser,
-        password: this.form.value.password,
-        rol: this.form.value.rol,
-      }
-      this._clientService.AddClient(model).subscribe();
+    try {
+      if (rol === "Client") {
+        const model: ClientParkingLotPost = {
+          name: this.form.value.name,
+          identification: this.form.value.identification,
+          email: this.form.value.email,
+          telephone: this.form.value.telephone,
+          nameUser: this.form.value.nameUser,
+          password: this.form.value.password,
+          rol: this.form.value.rol,
+        }
+        this._clientService.AddClient(model).subscribe(response => {
 
-      const log: Login = {
-        nameUser: this.form.value.nameUser,
-        Password: this.form.value.password,
-      } 
-
-      this._apiauth.login(log).subscribe(response =>{
-        if(response.result == 0){
-          const user = this._apiauth.getTokenUserInfo()
-          if(user){
-            this.id = user.RolId;
+          const log: Login = {
+            nameUser: this.form.value.nameUser,
+            Password: this.form.value.password,
           }
-  
-          this._rolService.getRol(this.id).subscribe(data =>{
-            const roleName = data.name;
-            if (roleName && roleName == 'Propietary Park') {
-              this._router.navigate(['/ViewParkingLot']);
-            }
-            if (roleName && roleName == 'Client') {
-              this._router.navigate(['/ParkingLot']);
+
+          this._apiauth.login(log).subscribe(response => {
+            if (response.result == 0) {
+              const user = this._apiauth.getTokenUserInfo()
+              if (user) {
+                this.id = user.RolId;
+              }
+
+              this._rolService.getRol(this.id).subscribe(data => {
+                const roleName = data.name;
+                if (roleName && roleName == 'Propietary Park') {
+                  this._snackBar.open('Has sido registrado correctamente', 'Cerrar', {
+                    duration: 3000, // Duración del mensaje (3 segundos)
+                  });
+                  this._router.navigate(['/ViewParkingLot']);
+                }
+                if (roleName && roleName == 'Client') {
+                  this._snackBar.open('Has sido registrado correctamente', 'Cerrar', {
+                    duration: 3000, // Duración del mensaje (3 segundos)
+                  });
+                  this._router.navigate(['/ParkingLot']);
+                }
+              });
+
             }
           });
-          
-        }});
-    }
-    if (rol === "Propietary Park") {
-      const model: PropietaryParkPost = {
-        name: this.form.value.name,
-        identification: this.form.value.identification,
-        email: this.form.value.email,
-        telephone: this.form.value.telephone,
-        nameUser: this.form.value.nameUser,
-        password: this.form.value.password,
-        rol: this.form.value.rol,
+        }
+        );
       }
-      this._propietaryService.AddPropietary(model).subscribe();
 
-      const log: Login = {
-        nameUser: this.form.value.nameUser,
-        Password: this.form.value.password,
-      } 
+      if (rol === "Propietary Park") {
+        const model: PropietaryParkPost = {
+          name: this.form.value.name,
+          identification: this.form.value.identification,
+          email: this.form.value.email,
+          telephone: this.form.value.telephone,
+          nameUser: this.form.value.nameUser,
+          password: this.form.value.password,
+          rol: this.form.value.rol,
+        }
+        this._propietaryService.AddPropietary(model).subscribe(response => {
 
-      this._apiauth.login(log).subscribe(response =>{
-        if(response.result == 0){
-          const user = this._apiauth.getTokenUserInfo()
-          if(user){
-            this.id = user.RolId;
+          const log: Login = {
+            nameUser: this.form.value.nameUser,
+            Password: this.form.value.password,
           }
   
-          this._rolService.getRol(this.id).subscribe(data =>{
-            const roleName = data.name;
-            if (roleName && roleName == 'Propietary Park') {
-              this._router.navigate(['/ViewParkingLot']);
-            }
-            if (roleName && roleName == 'Client') {
-              this._router.navigate(['/ParkingLot']);
+          this._apiauth.login(log).subscribe(response => {
+            if (response.result == 0) {
+              const user = this._apiauth.getTokenUserInfo()
+              if (user) {
+                this.id = user.RolId;
+              }
+  
+              this._rolService.getRol(this.id).subscribe(data => {
+                const roleName = data.name;
+                if (roleName && roleName == 'Propietary Park') {
+                  this._snackBar.open('Has sido registrado correctamente', 'Cerrar', {
+                    duration: 3000, // Duración del mensaje (3 segundos)
+                  });
+                  this._router.navigate(['/ViewParkingLot']);
+                }
+                if (roleName && roleName == 'Client') {
+                  this._snackBar.open('Has sido registrado correctamente', 'Cerrar', {
+                    duration: 3000, // Duración del mensaje (3 segundos)
+                  });
+                  this._router.navigate(['/ParkingLot']);
+                }
+              });
+  
             }
           });
-          
-        }});
+
+        });
+
+        
+      }
+
+
     }
+    catch (Exception) {
+      this._snackBar.open('No has sido registrado correctamente', 'Cerrar', {
+        duration: 3000, // Duración del mensaje (3 segundos)
+      });
+    }
+
 
 
   }
-
 }
