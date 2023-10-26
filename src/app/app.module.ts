@@ -37,6 +37,8 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
 import {MatMenuModule} from '@angular/material/menu';
 import { RegisterParkinglotComponent } from './components/register-parkinglot/register-parkinglot.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ViewParkinglotsComponent } from './components/view-parkinglots/view-parkinglots.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ViewReservationComponent,
     LoginComponent,
     UnauthorizedComponent,
-    RegisterParkinglotComponent
+    RegisterParkinglotComponent,
+    ViewParkinglotsComponent,
+    RegisterComponent
   ],
   imports: [
     NgFor,
