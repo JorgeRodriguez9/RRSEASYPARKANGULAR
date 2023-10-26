@@ -13,7 +13,7 @@ import { RolserviceService } from 'src/app/service/rol/rolservice.service';
 })
 export class LoginComponent implements OnInit{
 
-  user! : UserPost | null;
+  //user! : UserPost | null;
   id! : string;
 
 /*  public loginForm = new FormGroup({
@@ -52,7 +52,7 @@ constructor(public _apiauth: AuthService, private _router: Router, private fb: F
         this._rolService.getRol(this.id).subscribe(data =>{
           const roleName = data.name;
           if (roleName && roleName == 'Propietary Park') {
-            this._router.navigate(['/Reservation']);
+            this._router.navigate(['/ViewParkingLot']);
           }
           if (roleName && roleName == 'Client') {
             this._router.navigate(['/ParkingLot']);

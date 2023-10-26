@@ -7,18 +7,21 @@
   margin-bottom: 10px;
 }
 .container {
-    margin: 0 20%;
+    margin: 0% 15% 0% 10%;
   }
   .example-button-container {
 
     justify-content: center;
-    width: 120px;
+    width: 140px;
     margin-bottom: 15px;
   }
  
   table {
     width: 100%;
     margin-top: 1rem;
+  }
+  .paginator{
+    width: 100%;
   }
   .title{
     margin-top: 10px;

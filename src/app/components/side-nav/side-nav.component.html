@@ -1,4 +1,5 @@
-<mat-toolbar color="primary">
+
+<mat-toolbar color="primary" class="mattoolbar1">
     <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
@@ -23,7 +24,7 @@
 <mat-drawer-container class="example-container">
     <mat-drawer #drawer mode="side" opened class="custom-drawer">
         <mat-list role="list">
-            <mat-list-item role="listitem" routerLink="/Reservation" routerLinkActive="active" class="menu-item">
+            <mat-list-item role="listitem" routerLink="/ViewParkingLot" routerLinkActive="active" class="menu-item">
                 {{"RESERVAS" | titlecase}}
             </mat-list-item>
             <mat-list-item role="listitem" routerLink="/RegisterParkingLot" routerLinkActive="active" class="menu-item">
@@ -34,8 +35,8 @@
     <mat-drawer-content>
         <ng-content></ng-content>
     </mat-drawer-content>
-</mat-drawer-container>
 
+</mat-drawer-container>
 
   
 
