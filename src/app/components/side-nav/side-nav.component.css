@@ -1,7 +1,7 @@
 .example-container {
     flex-grow: 2;
     z-index: 1;
-    min-height: 100vh;
+    min-height: 90vh;
     flex-direction: column;
  
 
