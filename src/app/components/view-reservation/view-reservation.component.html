@@ -42,6 +42,17 @@
             <th mat-header-cell *matHeaderCellDef>Discapacitado</th>
             <td mat-cell *matCellDef="let element"> {{element.disabled}} </td>
         </ng-container>
+
+        <!-- Name -->
+        <ng-container matColumnDef="StartDate">
+          <th mat-header-cell *matHeaderCellDef>Hora Inicio</th>
+          <td mat-cell *matCellDef="let element"> {{element.startTime}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="EndDate">
+        <th mat-header-cell *matHeaderCellDef>Hora Final</th>
+        <td mat-cell *matCellDef="let element"> {{element.endTime}} </td>
+      </ng-container>
     
         <!-- Name -->
         <ng-container matColumnDef="Date">
@@ -54,7 +65,7 @@
     
     </table>
     
-    <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons aria-label="Select page of periodic elements" class="paginator">
     </mat-paginator>
     
   </div>  

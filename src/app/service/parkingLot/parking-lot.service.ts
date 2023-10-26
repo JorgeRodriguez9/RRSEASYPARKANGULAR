@@ -17,6 +17,10 @@ export class ParkingLotService {
   public getParkingLots(): Observable<ParkingLot[]> {
     return this._http.get<ParkingLot[]>(this.Endpoint + this.complement);
   }
+
+  public getParkingLotsPropietary(): Observable<ParkingLot[]> {
+    return this._http.get<ParkingLot[]>(`${this.Endpoint}${this.complement}/propietario/`);
+  }
   
   public getParkingLot(id: string): Observable<ParkingLot> {
     return this._http.get<ParkingLot>(`${this.Endpoint}${this.complement}/obtener/${id}`);
