@@ -19,9 +19,11 @@ export class RegisterComponent {
   showPassword = false;
   password: string = '';
   form: FormGroup;
+
   id!: string;
 
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private _clientService: ClientService, private _propietaryService: PropietaryParkService, private _apiauth: AuthService, private _rolService: RolserviceService, private _router: Router) {
+
     this.form = this.fb.group({
       name: [''],
       email: [''],
@@ -35,6 +37,7 @@ export class RegisterComponent {
 
   register() {
     const rol = this.form.value.rol;
+
     try {
       if (rol === "Client") {
         const model: ClientParkingLotPost = {
