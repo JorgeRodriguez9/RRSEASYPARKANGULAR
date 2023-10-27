@@ -12,6 +12,8 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
 import { RegisterParkinglotComponent } from './components/register-parkinglot/register-parkinglot.component';
 import { ViewParkinglotsComponent } from './components/view-parkinglots/view-parkinglots.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path: 'viewReservation/:id', component:ViewReservationComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
   {path: 'RegisterParkingLot', component:RegisterParkinglotComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
   {path: 'Login', component:LoginComponent},
+  {path: 'PasswordRecovery', component:PasswordRecoveryComponent},
+  {path: 'ConfirmPassword/:token', component:ConfirmPasswordComponent},
   {path: 'Register', component:RegisterComponent},
   {path: 'Unauthorized', component:UnauthorizedComponent},
   {path: 'ViewParkingLot', component:ViewParkinglotsComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},

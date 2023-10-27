@@ -8,6 +8,9 @@ import { UserPost } from 'Models/UserPost';
 import { Login } from 'Models/Login';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { Recovery } from 'Models/Recovery';
+import { RecoveryPassword } from 'Models/RecoveryPassword';
+import { Token } from 'Models/Token';
 //import * as jwt from 'jsonwebtoken';
 
 @Injectable({
@@ -17,6 +20,7 @@ export class AuthService {
 
   private Endpoint = environment.endPoint;
   private complement = "Api/ApiUser/Login";
+  private complement1 = "Api/ApiUser";
 
 
 
@@ -32,11 +36,6 @@ export class AuthService {
   constructor(private _http: HttpClient, private router: Router) {
 
     const storedUser = localStorage.getItem('Usuario');
-    /*
-        if (storedUser !== null) {
-          this.userSubject = new BehaviorSubject<User>(JSON.parse(storedUser));
-        } 
-        */
     if (storedUser !== null) {
       const parsedUser = JSON.parse(storedUser);
       if (parsedUser) {
@@ -54,7 +53,6 @@ export class AuthService {
     return this._http.post<Responses>(this.Endpoint + this.complement, { nameUser, Password }).pipe(
       map(res => {
         if (res.result == 0) {
-
           const user: User = res.data;
           localStorage.setItem('Usuario', JSON.stringify(user));
           this.userSubject.next(user);
@@ -64,6 +62,25 @@ export class AuthService {
       })
     );
   }
+
+  recovery(email: Recovery): Observable<Responses>{
+
+    return this._http.post<Responses>(`${this.Endpoint}${this.complement1}/Recovery`, email);
+
+  }
+
+  confirm(password: RecoveryPassword): Observable<Responses>{
+
+    return this._http.post<Responses>(`${this.Endpoint}${this.complement1}/RecoveryPassword`, password);
+
+  }
+
+  validation(token: Token): Observable<Responses>{
+
+    return this._http.post<Responses>(`${this.Endpoint}${this.complement1}/Validation`, token);
+
+  }
+
 
   getTokenUserInfo(): UserPost | null {
 
