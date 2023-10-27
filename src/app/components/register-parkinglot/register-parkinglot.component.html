@@ -80,7 +80,7 @@
             </div>
 
 
-            <input type="submit" class="submitBtn" value="Registrar">
+            <input type="submit" [disabled]="!form.valid" class="submitBtn" value="Registrar">
         </form>
     </div>
 </app-side-nav>

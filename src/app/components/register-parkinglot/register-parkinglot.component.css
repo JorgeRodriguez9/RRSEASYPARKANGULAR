@@ -149,6 +149,11 @@ body {
     margin-top: 30px;
 }
 
+.submitBtn[disabled] {
+    opacity: 0.5; /* Cambia la opacidad para que parezca deshabilitado */
+    cursor: not-allowed;  /*Cambia el cursor a "no permitido" */
+}
+
 .submitBtn:hover {
     background-color: #9867C5;
     transform: translateY(-2px);
