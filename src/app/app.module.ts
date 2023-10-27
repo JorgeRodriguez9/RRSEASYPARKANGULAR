@@ -39,6 +39,8 @@ import { RegisterParkinglotComponent } from './components/register-parkinglot/re
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ViewParkinglotsComponent } from './components/view-parkinglots/view-parkinglots.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { RegisterComponent } from './components/register/register.component';
     UnauthorizedComponent,
     RegisterParkinglotComponent,
     ViewParkinglotsComponent,
-    RegisterComponent
+    RegisterComponent,
+    PasswordRecoveryComponent,
+    ConfirmPasswordComponent
   ],
   imports: [
     NgFor,

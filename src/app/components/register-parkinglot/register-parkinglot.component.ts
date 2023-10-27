@@ -23,22 +23,20 @@ export class RegisterParkinglotComponent implements OnInit {
   public ListCities: City[] = [];
 
 
-
-
   constructor(private _CityService: CityService, private _ParkingLotService: ParkingLotService,private fb: FormBuilder, private _snackBar: MatSnackBar) {
     this.form = this.fb.group({
-      name: [''],
-      adress: [''],
-      nit: [''],
-      telephone: [''],
-      normalPrice: [''],
-      disabilityPrice: [''],
-      info: [''],
-      cantSpacesMotorcycle: [''],
-      cantSpacesCar: [''],
-      cantSpacesDisability: [''],
-      disabilityservices: [''],
-      cityId: ['']
+      name: ['', Validators.required],
+      adress: ['', Validators.required],
+      nit: ['', Validators.required],
+      telephone: ['', Validators.required],
+      normalPrice: ['', Validators.required],
+      disabilityPrice: ['',Validators.required],
+      info: ['', Validators.required],
+      cantSpacesMotorcycle: ['', Validators.required],
+      cantSpacesCar: ['', Validators.required],
+      cantSpacesDisability: ['', Validators.required],
+      disabilityservices: ['', Validators.required],
+      cityId: ['', Validators.required]
     })
   }
 
