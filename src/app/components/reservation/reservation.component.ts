@@ -48,79 +48,79 @@ export class ReservationComponent {
     }
   }
   constructor(private _typeVehicle: TypeVehicleService, private _ReservationService: ReservationService, private route: ActivatedRoute, private router: Router, private _parkingLot: ParkingLotService, private formBuilder: FormBuilder, private fb: FormBuilder) {
-   
-      this.reservationform = this.fb.group({
 
-        date: [''],
-        starttime: [''],
-        endtime: [''],
-        parkingType: [''],
-        vehicleType: ['']
-      })
-   
+    this.reservationform = this.fb.group({
+
+      date: [''],
+      starttime: [''],
+      endtime: [''],
+      parkingType: [''],
+      vehicleType: ['']
+    })
+
   }
-    AddReservation() {
+  AddReservation() {
 
-      let date = this.reservationform.value.date ? new Date(this.reservationform.value.date) : new Date();
-      let starttime = this.reservationform.value.starttime.toString()+":00"
-      console.log (starttime)
-      let endtime = this.reservationform.value.endtime.toString()+":00"
-      console.log (endtime)
-      console.log ("Hola")
-      console.log ((date.getDate()+1)+"/"+(date.getMonth()+1)+"/"+date.getFullYear())
+    let date = this.reservationform.value.date ? new Date(this.reservationform.value.date) : new Date();
+    let starttime = this.reservationform.value.starttime.toString() + ":00"
+    console.log(starttime)
+    let endtime = this.reservationform.value.endtime.toString() + ":00"
+    console.log(endtime)
+    console.log("Hola")
+    console.log((date.getDate() + 1) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear())
 
-      const model: Reservation = {
-        date: (date.getMonth()+1)+"-"+(date.getDate()+1)+"-"+date.getFullYear(),
-        starttime,
-        endtime,
-        disability: this.reservationform.value.parkingType,
-        vehicleType: this.reservationform.value.vehicleType,
-        id: '',
-        totalPrice: this.totalprice,
-        parkingLotId: this.parking.id ?? ""
-      }
-      console.log(model);
-      this._ReservationService.AddReservation(model).subscribe(
-        {
-
-          next: (data) => {
-            console.log(data);
-          }, error: (e) => {alert(e.error)}
-
-        }
-      )
-
-      //this.aRoute.paramMap.subscribe(params => {
-      // const elementJson = params.get('id');
-      // if(elementJson){
-      //  const element = JSON.parse(decodeURIComponent(elementJson));
-      //  this.id = element;
-      //}
-
-      // });
-
+    const model: Reservation = {
+      date: (date.getMonth() + 1) + "-" + (date.getDate() + 1) + "-" + date.getFullYear(),
+      starttime,
+      endtime,
+      disability: this.reservationform.value.parkingType,
+      vehicleType: this.reservationform.value.vehicleType,
+      id: '',
+      totalPrice: this.totalprice,
+      parkingLotId: this.parking.id ?? ""
     }
-    ngOnInit(): void {
-      this.getTypeVehicle();
+    console.log(model);
+    this._ReservationService.AddReservation(model).subscribe(
+      {
 
-      this.route.params.subscribe(params => {
-        this.id = params['id']
-      })
+        next: (data) => {
+          console.log(data);
+        }, error: (e) => { alert(e.error) }
+
+      }
+    )
+
+    //this.aRoute.paramMap.subscribe(params => {
+    // const elementJson = params.get('id');
+    // if(elementJson){
+    //  const element = JSON.parse(decodeURIComponent(elementJson));
+    //  this.id = element;
+    //}
+
+    // });
+
+  }
+  ngOnInit(): void {
+    this.getTypeVehicle();
+
+    this.route.params.subscribe(params => {
+      this.id = params['id']
+    })
 
     this.getParkingLot();
 
-    }
-    getTypeVehicle() {
-      this._typeVehicle.getTypeVehicle().subscribe(response => { this.ListVehicles = response; this.ListVehiclesFilter = this.ListVehicles });
-    }
-
-    getParkingLot() {
-      this._parkingLot.getParkingLot(this.id).subscribe(data => {
-        this.parking = data;
-        if (this.parking.disabilityservices == "NO") {
-          this.reservationform.get('parkingType')?.setValue("NO")
-        }
-      })
-    }
-
   }
+  getTypeVehicle() {
+    this._typeVehicle.getTypeVehicle().subscribe(response => { this.ListVehicles = response; this.ListVehiclesFilter = this.ListVehicles });
+  }
+
+  getParkingLot() {
+    this._parkingLot.getParkingLot(this.id).subscribe(data => {
+      this.parking = data;
+      if (this.parking.disabilityservices == "NO") {
+        this.reservationform.get('parkingType')?.setValue("NO")
+      }
+    })
+  }
+
+}

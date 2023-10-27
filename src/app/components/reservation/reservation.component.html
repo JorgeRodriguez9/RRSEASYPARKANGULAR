@@ -1,12 +1,8 @@
 <div class="title">
-  <h1>Reservas</h1>
+  <h1 class="titleWord">Reservas</h1>
 </div>
 
-<div class="centered-text" *ngIf="parking != undefined">
-  <h1>{{parking.name}}</h1>
-</div>
-
-<div class="container" *ngIf="parking != undefined">
+<div class="containerI" *ngIf="parking != undefined">
   <div class="column column1">
 
     <div class="container">
@@ -47,16 +43,16 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="space">
+        <mat-form-field class="space2">
           <mat-label>Tipo de Vehiculo</mat-label>
           <mat-select formControlName="vehicleType">
             <mat-option *ngFor="let TypoVehicle of ListVehiclesFilter"
               value={{TypoVehicle.id}}>{{TypoVehicle.name}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <button Type="submit" [disabled]="!reservationform.valid" mat-raised-button>Agendar </button>
+        <button class="custom-button" Type="submit" [disabled]="!reservationform.valid"> Agendar </button>
       </form>
-      
+
 
       <div class="column">
         <mat-card class="example-card">
@@ -65,12 +61,11 @@
               <h1>{{parking.name}}</h1>
             </mat-card-title>
           </mat-card-header>
-          <img mat-card-image
-            src="data:image/*;base64,{{parking.image}}"  alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>
-              {{parking.info}}
-            </p>
+          <img mat-card-image src="data:image/*;base64,{{parking.image}}" alt="Photo of a Shiba Inu">
+          <mat-card-content class="column1">
+
+            <h1>{{parking.info}}</h1>
+
             <div style="display: flex; justify-content: space-between;">
               <div style="width: 45%;">
                 <p>Telefono: {{parking.telephone}} </p>

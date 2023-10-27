@@ -21,7 +21,14 @@
   margin-top: 6%;
 }
 
+.containerI {
+  margin-top: -3%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .container {
+  margin-top: -4%;
   display: flex;
   justify-content: space-between;
 }
@@ -32,8 +39,16 @@
   margin-left: 10%;
 }
 
+.custom-button {
+  width: 527px;
+  height: 30px;
+  background-color: #a757cc;
+  color: #ffffff;
+}
+
 .example-card {
-  max-width: 400px;
+  width: 700px;
+  height: 500px;
 }
 
 /* Estilo para la etiqueta */
@@ -90,9 +105,18 @@
   margin-top: 4%;
 }
 
+.space2 {
+  margin-top: 2px;
+}
+
+
 .title {
-  padding: 30px;
-  background-color: #73af7c;
+  padding: 5px;
+  background-color: #a757cc;
   text-align: center;
-  color: rgb(255, 255, 255)
+  color: rgb(255, 255, 255);
+}
+
+.titleWord {
+  margin-top: 10px;
 }
