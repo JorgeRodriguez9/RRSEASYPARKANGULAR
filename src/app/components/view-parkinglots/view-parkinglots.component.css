@@ -75,3 +75,12 @@
     text-align: center;
     margin-top: 80px;
 }
+.label{
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    font-family: Monospace, sans-serif; 
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: #f30808;
+}

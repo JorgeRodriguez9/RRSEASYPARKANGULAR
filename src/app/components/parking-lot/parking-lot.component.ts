@@ -27,6 +27,7 @@ import { User } from 'Models/User';
   ]
 
 })
+
 export class ParkingLotComponent implements OnInit, AfterViewInit {
   public list: ParkingLot[] = [];
   public ListCities: City[] = [];
@@ -90,6 +91,7 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
     this._apiAuth.logout();
     this.router.navigate(['/Login']);
   }
+  
   /*
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -2,21 +2,40 @@
   margin-top: 5px;
 }
 .buttons-container {
-  top: 10px; /* Ajusta la posición vertical según sea necesario */
-  flex-direction: column; /* Coloca los botones en una columna vertical */
-  margin-left: 1px;
+  align-items: flex-end;
+
+
 }
 .buttons-container button {
   margin-bottom: 10px; /* Espacio entre los botones */
+  
 }
 .container {
   margin: 0 20%;
 }
+
+.row {
+  display: flex;
+  justify-content: space-between; /* Espacio entre las columnas */
+  align-items: flex-start; /* Alineación al inicio */
+  
+  /* Esto permite que las columnas se "envuelvan" a la siguiente fila si no hay suficiente espacio */
+}
+
 .column {
-  width: 108%; /* Ajusta el ancho de cada columna según sea necesario */
+ /* flex: 0 0 50%; /* No se expande, no se contrae, y tiene un ancho del 70% */
+ flex: 3;
+ min-width: 450px; /* Ancho mínimo de la columna de información */
+ flex-basis: 0; /* Permite que la columna se expanda */
 }
 .column2{
-  width: 30%; /* Ajusta el ancho de cada columna según sea necesario */
+  /*flex: 0 0 20%;  No se expande, no se contrae, y tiene un ancho del 30% */
+  flex: 1;
+}
+
+.titulo-parking {
+  text-align: justify;
+  word-spacing: 2px; /* Ajusta este valor según tus preferencias */
 }
 .mat-mdc-form-field {
   font-size: 14px;
@@ -45,11 +64,14 @@
   margin-left: 50px;
 }
 
-.title {
-  padding: 30px;
-  background-color: #a757cc;
+.title h1{
+  justify-content: center;
   text-align: center;
-  color: white;
+  font-size: 36px;
+  font-family: Monospace, sans-serif; 
+  margin-top: 20px;
+  margin-bottom: 40px;
+  color: #5a0553;
 }
 
 table {
@@ -88,3 +110,19 @@ tr.example-element-row:not(.example-expanded-row):active {
 .icon-blue {
   color: blue; /* Cambia el color al que desees, en este caso, azul */
 }
+
+
+.image{
+  width: 230px;
+  height: 150px;
+  display: block; 
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+.custom-paginator {
+  width: 100%; 
+  margin-bottom: 20px;
+}
+

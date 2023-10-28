@@ -1,0 +1,23 @@
+<app-sive-nav-client>
+    <div class="title">
+        <h1>RESERVAS AGENDADAS
+        </h1>
+      </div>
+    <ol id="lista5">
+        <li class="centrar" *ngFor="let reservation of list">
+            <div>
+                <p>Fecha: {{reservation.date}}</p>
+                <p>Hora de Inicio: {{reservation.startTime}}</p>
+                <p>Hora de Fin: {{reservation.endTime}}</p>
+                <p>Parqueadero: {{reservation.parkingLotName}}</p>
+                <p>Dirección: {{reservation.adress}}</p>
+            </div>
+            <button class="custom-button" (click)="openConfirmDialog(reservation.id)">Cancelar</button>
+        </li>
+    </ol>
+    <div class="label">
+        <label *ngIf="list && list.length === 0">!!NINGUNA RESERVA PROGRAMADA!!</label>
+    </div>
+    
+</app-sive-nav-client>
+
