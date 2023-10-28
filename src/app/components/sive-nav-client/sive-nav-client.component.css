@@ -23,6 +23,18 @@
   width: 100%;
   z-index: 1000; /* Asegura que el toolbar esté encima del resto del contenido */
 }
+.icon-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-blue {
+    color: rgb(162, 0, 255); /* Cambia el color al que desees, en este caso, azul */
+    margin-right: 5px;
+  }
+ 
+  
+  
 mat-toolbar {
     display: flex;
     justify-content: space-between;
@@ -49,13 +61,5 @@ mat-toolbar {
     cursor: pointer;
 }
 mat-drawer-container.example-container {
-  margin-top: 64px; /* La altura del mat-toolbar */
-}
-.icon-blue {
-  color: rgb(162, 0, 255); /* Cambia el color al que desees, en este caso, azul */
-  margin-right: 5px;
-}
-.icon-container {
-  display: flex;
-  align-items: center;
-}
+    margin-top: 64px; /* La altura del mat-toolbar */
+  }

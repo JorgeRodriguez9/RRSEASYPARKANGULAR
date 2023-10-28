@@ -7,6 +7,9 @@
                     <button class="list-button" (click)="reserva(parking)">Ver Reservas</button>
                 </li>
             </div>
+            <div class="label">
+                <label *ngIf="list && list.length === 0">!!NINGUN PARQUEADERO REGISTRADO!!</label>
+            </div>
         </ol>
     </div>
 </app-side-nav>

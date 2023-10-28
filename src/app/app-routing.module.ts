@@ -14,13 +14,17 @@ import { ViewParkinglotsComponent } from './components/view-parkinglots/view-par
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
+import { SiveNavClientComponent } from './components/sive-nav-client/sive-nav-client.component';
+import { GetReservationsComponent } from './components/get-reservations/get-reservations.component';
 
 
 const routes: Routes = [
   {path: 'ParkingLot', component:ParkingLotComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Client' }},
+  {path: 'GetReservations', component:GetReservationsComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Client' }},
   {path: 'Reservation/:id', component:ReservationComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Client' }},
-  {path: 'PrincipalPage', component:PrincipalPageComponent},
+  {path: '', component:PrincipalPageComponent},
   {path: 'SideNav', component:SideNavComponent, canActivate : [AuthGuard]},
+  {path: 'SideNavClient', component:SiveNavClientComponent, canActivate : [AuthGuard]},
   {path: 'viewReservation/:id', component:ViewReservationComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
   {path: 'RegisterParkingLot', component:RegisterParkinglotComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
   {path: 'Login', component:LoginComponent},

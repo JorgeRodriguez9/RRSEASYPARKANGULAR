@@ -1,89 +1,85 @@
-<div class="title">
-  <h1 class="titleWord">Reservas</h1>
-</div>
-
-<div class="containerI" *ngIf="parking != undefined">
-  <div class="column column1">
-
-    <div class="container">
-      <form [formGroup]="reservationform" (ngSubmit)="AddReservation()">
-        <div class="form-group">
-          <label for="startdate" class="form-label">Fecha:</label>
-          <input type="date" formControlName="date" name="date" class="form-control">
-        </div>
-
-        <div class="form-group space">
-          <label for="enddate" class="form-label">Hora inicio:</label>
-          <input type="time" formControlName="starttime">
-        </div>
-
-        <div class="form-group space">
-          <label for="enddate" class="form-label">Hora fin:</label>
-          <input type="time" formControlName="endtime">
-        </div>
-
-        <!--<mat-form-field class="space" *ngIf="parking.disabilityservices === 'SI'">
-          <mat-label>Tipos de parqueaderos:</mat-label>
-          <mat-select formControlName="parkingType" value="NO" (valueChange)="UpdateList($event)">
-            <mat-option value="SI">DISCAPACITADOS</mat-option>
-            <mat-option value="NO">NORMALES</mat-option>
-          </mat-select>
-        </mat-form-field>-->
-
-        <mat-form-field class="space">
-          <mat-label>Tipos de parqueaderos:</mat-label>
-          <mat-select formControlName="parkingType" (valueChange)="UpdateList($event)">
-            <ng-container *ngIf="parking.disabilityservices === 'SI'; else noOption">
+<app-sive-nav-client>
+  <div class="title">
+    <h1 class="titleWord">Reservas</h1>
+  </div>
+  
+  <div class="containerI" *ngIf="parking != undefined">
+    <div class="column column1">
+  
+      <div class="container">
+        <form [formGroup]="reservationform" (ngSubmit)="AddReservation()">
+          <div class="form-group">
+            <label for="startdate" class="form-label">Fecha:</label>
+            <input type="date" formControlName="date" name="date" class="form-control">
+          </div>
+  
+          <div class="form-group space">
+            <label for="enddate" class="form-label">Hora inicio:</label>
+            <input type="time" formControlName="starttime">
+          </div>
+  
+          <div class="form-group space">
+            <label for="enddate" class="form-label">Hora fin:</label>
+            <input type="time" formControlName="endtime">
+          </div>
+  
+          <!--<mat-form-field class="space" *ngIf="parking.disabilityservices === 'SI'">
+            <mat-label>Tipos de parqueaderos:</mat-label>
+            <mat-select formControlName="parkingType" value="NO" (valueChange)="UpdateList($event)">
               <mat-option value="SI">DISCAPACITADOS</mat-option>
-              <mat-option value="NO">GENERAL</mat-option>
-            </ng-container>
-            <ng-template #noOption>
-              <mat-option value="NO">GENERAL</mat-option>
-            </ng-template>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field class="space2">
-          <mat-label>Tipo de Vehiculo</mat-label>
-          <mat-select formControlName="vehicleType">
-            <mat-option *ngFor="let TypoVehicle of ListVehiclesFilter"
-              value={{TypoVehicle.id}}>{{TypoVehicle.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button class="custom-button" Type="submit" [disabled]="!reservationform.valid"> Agendar </button>
-      </form>
-
-
-      <div class="column">
-        <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>
-              <h1>{{parking.name}}</h1>
-            </mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="data:image/*;base64,{{parking.image}}" alt="Photo of a Shiba Inu">
-          <mat-card-content class="column1">
-
-            <h1>{{parking.info}}</h1>
-
-            <div style="display: flex; justify-content: space-between;">
-              <div style="width: 45%;">
-                <p>Telefono: {{parking.telephone}} </p>
-                <p>Precio: {{parking.normalPrice}} </p>
-                <p *ngIf="parking.disabilityservices === 'SI'">Precio Discapacitados: {{parking.disabilityPrice}} </p>
+              <mat-option value="NO">NORMALES</mat-option>
+            </mat-select>
+          </mat-form-field>-->
+  
+          <mat-form-field class="space">
+            <mat-label>Tipos de parqueaderos:</mat-label>
+            <mat-select formControlName="parkingType" (valueChange)="UpdateList($event)">
+              <ng-container *ngIf="parking.disabilityservices === 'SI'; else noOption">
+                <mat-option value="SI">DISCAPACITADOS</mat-option>
+                <mat-option value="NO">GENERAL</mat-option>
+              </ng-container>
+              <ng-template #noOption>
+                <mat-option value="NO">GENERAL</mat-option>
+              </ng-template>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field class="space2">
+            <mat-label>Tipo de Vehiculo</mat-label>
+            <mat-select formControlName="vehicleType">
+              <mat-option *ngFor="let TypoVehicle of ListVehiclesFilter"
+                value={{TypoVehicle.id}}>{{TypoVehicle.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button class="custom-button" Type="submit" [disabled]="!reservationform.valid"> Agendar </button>
+        </form>
+  
+  
+        <div class="column">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>
+                <h1 class="title1">{{parking.name}}</h1>
+              </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="data:image/*;base64,{{parking.image}}" alt="Photo of a Shiba Inu">
+            <mat-card-content class="text">
+  
+              <p>{{parking.info}}</p>
+  
+              <div >
+                <div >
+                  <p>- Telefono: {{parking.telephone}} </p>
+                  <p>- Precio: {{parking.normalPrice}} </p>
+                  <p *ngIf="parking.disabilityservices === 'SI'">- Precio Discapacitados: {{parking.disabilityPrice}} </p>
+                </div>
               </div>
-              <!-- <div style="width: 45%;">
-                <p>parq. Moto: {{parking.cantSpacesMotorcycle}}</p>
-                <p>parq. Carro: {{parking.cantSpacesCar}} </p>
-                <p *ngIf="parking.disabilityservices === 'SI'">parq. Discapacitados: {{parking.cantSpacesDisability}}
-                </p>
-              </div> -->
-            </div>
-          </mat-card-content>
-          <mat-card-actions>
-          </mat-card-actions>
-        </mat-card>
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</app-sive-nav-client>

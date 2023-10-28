@@ -12,6 +12,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { ParkingLotService } from 'src/app/service/parkingLot/parking-lot.service';
 import { ReservationService } from 'src/app/service/reservation/reservation.service';
 import { TypeVehicleService } from 'src/app/service/typeVehicle/type-vehicle.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -47,7 +48,7 @@ export class ReservationComponent {
       //this.totalprice = this.parking.normalPrice
     }
   }
-  constructor(private _typeVehicle: TypeVehicleService, private _ReservationService: ReservationService, private route: ActivatedRoute, private router: Router, private _parkingLot: ParkingLotService, private formBuilder: FormBuilder, private fb: FormBuilder) {
+  constructor(private _snackBar: MatSnackBar, private _typeVehicle: TypeVehicleService, private _ReservationService: ReservationService, private route: ActivatedRoute, private router: Router, private _parkingLot: ParkingLotService, private formBuilder: FormBuilder, private fb: FormBuilder) {
 
     this.reservationform = this.fb.group({
 
@@ -84,7 +85,12 @@ export class ReservationComponent {
       {
 
         next: (data) => {
-          console.log(data);
+          
+          this.reservationform.reset();
+          this._snackBar.open('Reserva Exitosa', 'Cerrar', {
+            duration: 3000, 
+          });
+          
         }, error: (e) => { alert(e.error) }
 
       }

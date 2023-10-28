@@ -41,6 +41,10 @@ import { ViewParkinglotsComponent } from './components/view-parkinglots/view-par
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
+import { SiveNavClientComponent } from './components/sive-nav-client/sive-nav-client.component';
+import { GetReservationsComponent } from './components/get-reservations/get-reservations.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -57,7 +61,10 @@ import { ConfirmPasswordComponent } from './components/confirm-password/confirm-
     ViewParkinglotsComponent,
     RegisterComponent,
     PasswordRecoveryComponent,
-    ConfirmPasswordComponent
+    ConfirmPasswordComponent,
+    SiveNavClientComponent,
+    GetReservationsComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     NgFor,
@@ -86,7 +93,8 @@ import { ConfirmPasswordComponent } from './components/confirm-password/confirm-
     MatButtonToggleModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInteceptor, multi: true}
