@@ -9,7 +9,15 @@
     <link rel="login" href="login.component.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
+<header>
+    <div class="container">
+        <p class="logo">RRS EASYPARK</p>
+        <nav>
+            <a href="">INICIO</a>
+            <a href="/Login">INICIAR SESION</a>
+        </nav>
+    </div>
+</header>
 <body>
     <div class="wrapper">
         <form [formGroup]="form" (ngSubmit)="register()">

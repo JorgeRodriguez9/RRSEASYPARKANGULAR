@@ -1,34 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRSEASYPARK</title>
-    <link rel="principal-page" href="principal-page.component.css">
+    <title>RRS EASYPARK</title>
 </head>
-
 <body>
-
-    <header class="header">
-        <div class="menu container">
-            <div class="logo">
-                <img [src]="images" alt="My image">
-            </div>
-            <input type="checkbox" id="menu" />
-            <nav class="navbar">
-                <ul>
-                    <li><a href="">Inicio</a></li>
-                    <li><a href="/Login">Iniciar Sesion</a></li>
-                    <li><a href="/Register">Registrarse</a></li>
-                </ul>
+    <header>
+        <div class="container">
+            <p class="logo">RRS EASYPARK</p>
+            <nav>
+                <a href="">Inicio</a>
+                <a href="/Register">Registrarse</a>
+                <a href="/Login">Iniciar Sesion</a>
             </nav>
         </div>
-        <div class="header-content container">
-            <div class="header-txt">
-                <h1>Reserva tu <span>Parqueadero</span> <br> favorito aqui </h1>
-                <h2>
-                    El propósito de RRS EasyPark es implementar un sistema de reserva
+    </header>
+    <section id="somos-proya">
+        <div class="container">
+            <div class="img-container">
+                <img src="/Logo.jpg" alt="">
+            </div>
+            <div class="texto">
+                <h2>Somos <span class="color-acento">RRS EASYPARK</span></h2>
+                <p>El propósito de RRS EasyPark es implementar un sistema de reserva
                     de parqueaderos que brinde una solución eficiente y equitativa tanto para
                     personas normales como para personas discapacitadas. El sistema se diseñará
                     para optimizar la utilización del espacio de estacionamiento disponible,
@@ -36,23 +29,63 @@
                     y garantizando la inclusión y comodidad de personas con discapacidades.
                     Además, el sistema tiene como objetivo mejorar la experiencia de
                     estacionamiento al reducir el estrés y la incertidumbre asociados con la
-                    búsqueda de espacios vacíos!
-                </h2>
-                <div class="butons">
-                    <a href="#" class="btn-1">Informacion</a>
-                </div>
+                    búsqueda de espacios vacíos!</p>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!--<section class="contact container">
-        <div class="contact-content">
-            <h3>Subscribete a nuestra pagina</h3>
-            <form>
-                <input type="email" placeholder="Escribe tu correo">
-                <input type="submit" class="btn-3" value="Enviar">
-            </form>
+    <section id="nuestros-programas">
+        <div class="container">
+            <h2>NOSOTROS</h2>
+            <div class="programas">
+                <div class="carta">
+                    <h3>MISION</h3>
+                    <p>Facilitar la experiencia de estacionamiento para todas las personas, incluyendo aquellas 
+                        con discapacidades, al proporcionar un aplicativo web intuitivo y accesible que permita 
+                        localizar y reservar parqueaderos cercanos a su destino de manera rápida, segura y 
+                        conveniente y se acomode a sus condiciones y comodidades.</p>
+                 
+                </div>
+                <div class="carta">
+                    <h3>VISIÓN</h3>
+                    <p>Ser la plataforma líder a nivel global en la gestión de reservas de parqueaderos, 
+                        reconocida por nuestra excelencia en accesibilidad y servicio al cliente. Aspiramos a
+                        transformar la manera en que las personas abordan el estacionamiento, convirtiéndolo
+                        en una experiencia sin complicaciones y adaptada a las necesidades individuales.</p>
+                
+                </div>
+                <div class="carta">
+                    <h3>OBJETIVO GENERAL</h3>
+                    <p>Construir un aplicativo web que se encargue de brindar la ubicación o gestionar
+                        las reservas que hacen las personas normales y discapacitadas a los distintos
+                        parqueaderos cercanos a su lugar de destino, con la ventaja de poder hacer todo
+                        desde la comodidad de su casa, o sin ningún tipo de estrés para la persona.
+                    </p>
+                </div>  
+            </div>
         </div>
+    </section>
 
-            
-    </section>-->
+    
+
+    <section id="caracteristicas">
+        <div class="contenedor">
+            <div class="texto">
+              <h2>UNETE</h2>
+              <p>Imagina una experiencia de estacionamiento sin complicaciones, diseñada para todos. Nuestro innovador aplicativo web facilita la ubicación y reserva de parqueaderos cercanos a tu destino, brindando comodidad a cada paso. Ya sea que seas una persona en general o enfrentes condiciones físicas, 
+                nuestro servicio te libera del estrés de la búsqueda. Desde la tranquilidad de tu hogar, podrás asegurar un espacio 
+                adaptado a tus necesidades. Únete a nosotros y transforma la forma en que vives la movilidad urbana</p>
+            </div>
+            <div class="video">
+                <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/EcyIzwYFydA?si=RAT4aTRfFaBU5D22" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; RRS EASYPARK</p>
+        </div>
+    </footer>
+</body>
+</html>
