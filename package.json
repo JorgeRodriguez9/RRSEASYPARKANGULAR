@@ -11,7 +11,6 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
-    "@angular/cdk": "^16.2.3",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
@@ -20,6 +19,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@ngneat/transloco": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^3.1.2",
     "rxjs": "~7.8.0",
