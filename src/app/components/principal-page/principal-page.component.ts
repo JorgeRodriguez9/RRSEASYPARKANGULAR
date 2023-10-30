@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class PrincipalPageComponent {
 images:string="assets/images/Logo.jpg"; 
+ 
 }
