@@ -45,6 +45,8 @@ import { SiveNavClientComponent } from './components/sive-nav-client/sive-nav-cl
 import { GetReservationsComponent } from './components/get-reservations/get-reservations.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ParkingLotsComponent } from './components/parking-lots/parking-lots.component';
+import { ModifyParkingLotComponent } from './components/modify-parking-lot/modify-parking-lot.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ConfirmPasswordComponent,
     SiveNavClientComponent,
     GetReservationsComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ParkingLotsComponent,
+    ModifyParkingLotComponent
   ],
   imports: [
     NgFor,

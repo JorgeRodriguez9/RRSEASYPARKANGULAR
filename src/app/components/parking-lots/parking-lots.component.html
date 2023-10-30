@@ -1,0 +1,17 @@
+<app-side-nav>
+    <div class="title">
+        <h1>PARQUEADEROS
+        </h1>
+      </div>
+    <div id="lista2-container">
+        <ol id="lista3">
+            <li class="centrar" *ngFor="let parking of list">
+                <div>
+                    <p>Nombre: {{parking.name}}</p>
+                    <p>Dirección: {{parking.adress}}</p>
+                </div>
+                <button class="modificar-btn" (click)="modify(parking)">Modificar</button>
+            </li>       
+        </ol>
+    </div>
+</app-side-nav>

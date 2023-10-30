@@ -35,7 +35,12 @@
                     <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="app_registration"></mat-icon>
                     {{"REGISTRAR PARQUEADERO" | titlecase}}
                   </div>
-                
+            </mat-list-item>
+            <mat-list-item role="listitem" routerLink="/View" routerLinkActive="active" class="menu-item">
+                <div class="icon-container">
+                    <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+                    {{"MODIFICAR PARQUEADEROS" | titlecase}}
+                  </div>
             </mat-list-item>
             <mat-list-item role="listitem" (click)="logOut()" class="menu-item">
                 <div class="icon-container">
