@@ -47,7 +47,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { MatDialogModule } from '@angular/material/dialog';
 import { ParkingLotsComponent } from './components/parking-lots/parking-lots.component';
 import { ModifyParkingLotComponent } from './components/modify-parking-lot/modify-parking-lot.component';
-
+import { TranslocoRootModule } from './transloco-root.module';
+import { ComboComponent } from './components/combo/combo.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ModifyParkingLotComponent } from './components/modify-parking-lot/modif
     GetReservationsComponent,
     ConfirmDialogComponent,
     ParkingLotsComponent,
-    ModifyParkingLotComponent
+    ModifyParkingLotComponent,
+    ComboComponent
   ],
   imports: [
     NgFor,
@@ -98,7 +100,8 @@ import { ModifyParkingLotComponent } from './components/modify-parking-lot/modif
     MatToolbarModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    TranslocoRootModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInteceptor, multi: true}
