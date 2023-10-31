@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { Recovery } from 'Models/Recovery';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
 
 @Component({
   selector: 'app-password-recovery',
@@ -15,10 +17,16 @@ export class PasswordRecoveryComponent {
   form: FormGroup;
 
 
-constructor(private _snackBar: MatSnackBar,private fb: FormBuilder,public _apiauth: AuthService, private _router: Router){
+constructor(private translocoservice: TranslocoService, private languageService: LenguageService, private _snackBar: MatSnackBar,private fb: FormBuilder,public _apiauth: AuthService, private _router: Router){
   this.form = this.fb.group({
     email: ['', Validators.required]
   })
+}
+
+ngOnInit(): void {
+  const selectedLanguage = this.languageService.getSelectedLanguage();
+  localStorage.setItem('selectedLanguage', selectedLanguage);
+  this.translocoservice.setActiveLang(selectedLanguage);
 }
 
 recovery(){

@@ -131,5 +131,15 @@
     "cancelar": "Cancel",
     "aceptar": "Accept",
     "mensaje":  "¿Are you sure you want to delete this reservation?"
+  },
+  "recover":{
+    "recover": "Recover Password",
+    "email": "Email Address"
+  },
+  "confirmP":{
+    "contraseña": "Password",
+    "confirmar": "Confirm Password",
+    "no": "Passwords do not match.",
+    "cambiar": "Change Password"
   }
 }

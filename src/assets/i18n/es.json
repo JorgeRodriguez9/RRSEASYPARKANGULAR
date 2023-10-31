@@ -132,6 +132,16 @@
     "cancelar": "Cancelar",
     "aceptar": "Aceptar",
     "mensaje":  "¿Estás seguro de que deseas eliminar esta reserva?"
+  },
+  "recover":{
+    "recover": "Recuperar Contraseña",
+    "email": "Correo Electronico"
+  },
+  "confirmP":{
+    "contraseña": "Contraseña",
+    "confirmar": "Confirmar Contraseña",
+    "no": "Las contraseñas no coinciden.",
+    "cambiar": "Cambiar Contraseña"
   }
 
 
