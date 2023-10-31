@@ -67,6 +67,11 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   reserva(element: any) {
     this.router.navigate([`/Reservation/${element.id}`]);
   }
+
+  coordinates(element: any){
+    this.router.navigate([`/googleMaps`],{queryParams: {adress: element.adress, city: element.cityName}});
+  }
+
   obtenerinfo() {
     this._apiAuth.getTokenUserInfo();
   }

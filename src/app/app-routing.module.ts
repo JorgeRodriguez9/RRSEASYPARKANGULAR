@@ -14,6 +14,7 @@ import { ViewParkinglotsComponent } from './components/view-parkinglots/view-par
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
+import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'Register', component:RegisterComponent},
   {path: 'Unauthorized', component:UnauthorizedComponent},
   {path: 'ViewParkingLot', component:ViewParkinglotsComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
+  {path: 'googleMaps', component:GoogleMapsComponent},
 ];
 
 @NgModule({

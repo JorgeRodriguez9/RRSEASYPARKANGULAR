@@ -41,6 +41,8 @@ import { ViewParkinglotsComponent } from './components/view-parkinglots/view-par
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
+import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -57,7 +59,8 @@ import { ConfirmPasswordComponent } from './components/confirm-password/confirm-
     ViewParkinglotsComponent,
     RegisterComponent,
     PasswordRecoveryComponent,
-    ConfirmPasswordComponent
+    ConfirmPasswordComponent,
+    GoogleMapsComponent
   ],
   imports: [
     NgFor,
@@ -86,7 +89,8 @@ import { ConfirmPasswordComponent } from './components/confirm-password/confirm-
     MatButtonToggleModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    GoogleMapsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInteceptor, multi: true}

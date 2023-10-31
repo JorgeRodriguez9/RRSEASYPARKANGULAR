@@ -14,10 +14,12 @@ export class AppComponent {
   Nombre = "RRS EasyPark"
   user!: User | null;
 
-  constructor(public _apiAuth : AuthService, private router: Router) {
+
+  constructor(public _apiAuth: AuthService, private router: Router) {
     this._apiAuth.useer.subscribe(res => {
       this.user = res;
-      console.log('cambio el objeto' + res);    });
+      console.log('cambio el objeto' + res);
+    });
   }
- 
+
 }
