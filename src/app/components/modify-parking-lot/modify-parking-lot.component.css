@@ -208,3 +208,8 @@ input[type=file]::file-selector-button:hover {
   width: 185px;
   /* Las columnas ocuparán el 48% del espacio disponible */
 }
+.space{
+  text-align: right;
+  margin-top: 22px;
+  margin-right: 10px;
+}

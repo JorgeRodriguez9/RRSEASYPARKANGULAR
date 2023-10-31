@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { Tile } from 'Interfaces/Tile';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { User } from 'Models/User';
+import { TranslocoService } from '@ngneat/transloco';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
 
 
 @Component({
@@ -46,7 +48,7 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
   cityform!: FormGroup;
   form!: FormGroup;
 
-  constructor(private _ParkingLotService: ParkingLotService, private _CityService: CityService, private formBuilder: FormBuilder, private fb: FormBuilder,
+  constructor(private translocoservice: TranslocoService, private languageService: LenguageService, private _ParkingLotService: ParkingLotService, private _CityService: CityService, private formBuilder: FormBuilder, private fb: FormBuilder,
     private router: Router, private _apiAuth: AuthService) {
     this._apiAuth.useer.subscribe(res => {
       this.user = res;
@@ -77,6 +79,9 @@ export class ParkingLotComponent implements OnInit, AfterViewInit {
     this.getParkingLots();
     this.getCity();
     this.obtenerinfo();
+    const selectedLanguage = this.languageService.getSelectedLanguage();
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    this.translocoservice.setActiveLang(selectedLanguage)
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

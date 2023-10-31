@@ -13,6 +13,8 @@ import { ParkingLotService } from 'src/app/service/parkingLot/parking-lot.servic
 import { ReservationService } from 'src/app/service/reservation/reservation.service';
 import { TypeVehicleService } from 'src/app/service/typeVehicle/type-vehicle.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 
 @Component({
@@ -48,7 +50,7 @@ export class ReservationComponent {
       //this.totalprice = this.parking.normalPrice
     }
   }
-  constructor(private _snackBar: MatSnackBar, private _typeVehicle: TypeVehicleService, private _ReservationService: ReservationService, private route: ActivatedRoute, private router: Router, private _parkingLot: ParkingLotService, private formBuilder: FormBuilder, private fb: FormBuilder) {
+  constructor(private translocoservice: TranslocoService, private languageService: LenguageService, private _snackBar: MatSnackBar, private _typeVehicle: TypeVehicleService, private _ReservationService: ReservationService, private route: ActivatedRoute, private router: Router, private _parkingLot: ParkingLotService, private formBuilder: FormBuilder, private fb: FormBuilder) {
 
     this.reservationform = this.fb.group({
 
@@ -71,7 +73,7 @@ export class ReservationComponent {
     console.log((date.getDate() + 1) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear())
 
     const model: Reservation = {
-      date: (date.getMonth() + 1) + "-" + (date.getDate() + 1) + "-" + date.getFullYear(),
+      date: this.reservationform.value.date,
       starttime,
       endtime,
       disability: this.reservationform.value.parkingType,
@@ -114,6 +116,9 @@ export class ReservationComponent {
     })
 
     this.getParkingLot();
+    const selectedLanguage = this.languageService.getSelectedLanguage();
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    this.translocoservice.setActiveLang(selectedLanguage)
 
   }
   getTypeVehicle() {

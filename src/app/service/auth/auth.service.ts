@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { Recovery } from 'Models/Recovery';
 import { RecoveryPassword } from 'Models/RecoveryPassword';
 import { Token } from 'Models/Token';
+import { LenguageService } from '../lenguage/lenguage.service';
+import { TranslocoService } from '@ngneat/transloco';
 //import * as jwt from 'jsonwebtoken';
 
 @Injectable({
@@ -33,7 +35,7 @@ export class AuthService {
 
 
 
-  constructor(private _http: HttpClient, private router: Router) {
+  constructor(private translocoservice: TranslocoService, private _http: HttpClient, private router: Router, private languageService: LenguageService) {
 
     const storedUser = localStorage.getItem('Usuario');
     if (storedUser !== null) {
@@ -57,6 +59,8 @@ export class AuthService {
           localStorage.setItem('Usuario', JSON.stringify(user));
           this.userSubject.next(user);
           console.log(user);
+          const selectedLanguage = this.languageService.getSelectedLanguage();
+          this.translocoservice.setActiveLang(selectedLanguage)
         }
         return res;
       })
@@ -101,9 +105,13 @@ export class AuthService {
   }
 
   logout() {
+    const selectedLanguage = this.languageService.getSelectedLanguage();
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    const selectedLanguag = localStorage.getItem('selectedLanguage') || 'es';
+    this.translocoservice.setActiveLang(selectedLanguag)
     localStorage.removeItem('Usuario');
     this.userSubject.next(null);
-    this.router.navigate(['/Login']);
+    this.router.navigate(['']);
   }
 
 

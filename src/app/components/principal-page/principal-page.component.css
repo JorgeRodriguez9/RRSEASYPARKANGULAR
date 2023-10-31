@@ -83,8 +83,13 @@ header a:hover{
 
 #somos-proya .container{
     text-align: center;
-    padding: 90px 12px;
+    padding: 0px 12px;
 }
+#somos-proya .container2{
+    text-align: right;
+    padding: 80px 10px 12px 12px;
+}
+
 
 #nuestros-programas{
     background-color: blueviolet;
@@ -344,7 +349,9 @@ footer .container{
     width: 45%; /* Ajusta el ancho del texto según tus preferencias */
     margin-top: 50px;
   }
-  
+  .space{
+    margin-top: 100px;
+  }
     
     
 

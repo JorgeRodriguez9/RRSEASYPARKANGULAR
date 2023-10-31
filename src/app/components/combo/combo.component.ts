@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
 
 @Component({
   selector: 'app-combo',
@@ -8,13 +9,18 @@ import { TranslocoService } from '@ngneat/transloco';
 })
 export class ComboComponent {
 
-  constructor(private translocoservice: TranslocoService) {
-    
+  selectedLanguage!: string;
+
+  constructor(private translocoservice: TranslocoService, private languageService: LenguageService) {
+    this.languageService.selectedLanguage$.subscribe(language => {
+      this.selectedLanguage = language;
+    });
   }
   onLanguageChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     const selectedLanguage = target.value;
     this.myMethod(selectedLanguage);
+    this.languageService.setSelectedLanguage(selectedLanguage);
   }
 
   myMethod(selectedLanguage: string) {

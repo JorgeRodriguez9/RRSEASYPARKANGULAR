@@ -1,4 +1,3 @@
-
 <mat-toolbar color="primary" class="mattoolbar1">
     <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
@@ -6,7 +5,7 @@
     <h1>RRS EASYPARK</h1>
     <div class="user-info">
         <span>
-            Hola,
+            {{'sive-nav-client.HO' | transloco }}
             {{this.user?.Name | titlecase}}
         </span>
         <button mat-icon-button [matMenuTriggerFor]="userMenu">
@@ -27,20 +26,20 @@
             <mat-list-item role="listitem" routerLink="/ParkingLot" routerLinkActive="active" class="menu-item">
                 <div class="icon-container">
                   <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon>
-                  {{"BUSCAR PARQUEADEROS" | titlecase}}
+                  {{'sive-nav-client.BU' | transloco }} 
                 </div>
                 
               </mat-list-item>
             <mat-list-item role="listitem" routerLink="/GetReservations" routerLinkActive="active" class="menu-item">
                 <div class="icon-container">
                     <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="list"></mat-icon>
-                    {{"VER RESERVAS" | titlecase}}
+                    {{'sive-nav-client.VE' | transloco }}
                   </div>
             </mat-list-item>
             <mat-list-item role="listitem" (click)="logOut()" class="menu-item">
                 <div class="icon-container">
                     <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
-                    {{"CERRAR SESION" | titlecase}}
+                    {{'sive-nav-client.CE' | transloco }}
                   </div>
             </mat-list-item>
         </mat-list>

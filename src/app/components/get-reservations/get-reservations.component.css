@@ -96,3 +96,8 @@
 .custom-button:hover {
     background-color: #6c3483; /* Cambio de color al pasar sobre el botón */
 }
+.space{
+    text-align: right;
+    margin-top: 22px;
+    margin-right: 10px;
+  }
