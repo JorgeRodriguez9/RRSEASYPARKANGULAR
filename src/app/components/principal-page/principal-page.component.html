@@ -1,59 +1,77 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRSEASYPARK</title>
-    <link rel="principal-page" href="principal-page.component.css">
+    <title>RRS EASYPARK</title>
 </head>
-
 <body>
-
-    <header class="header">
-        <div class="menu container">
-            <div class="logo">
-                <img [src]="images" alt="My image">
-            </div>
-            <input type="checkbox" id="menu" />
-            <nav class="navbar">
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Reservas</a></li>
-                    <li><a href="#">Parqueaderos</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
+    <header>
+        <div class="container">
+            <p class="logo">RRS EASYPARK</p>
+            <nav>
+                <a href="">{{'msg.inicio' | transloco }}</a>
+                <a href="/Register">{{'msg.registrarse' | transloco }}</a>
+                <a href="/Login">{{'msg.iniciar' | transloco }}</a>
             </nav>
         </div>
-        <div class="header-content container">
-            <div class="header-txt">
-                <h1>Reserva tu <span>Parqueadero</span> <br> favorito aqui </h1>
-                <h2>
-                    El propósito de RRS EasyPark es implementar un sistema de reserva
-                    de parqueaderos que brinde una solución eficiente y equitativa tanto para
-                    personas normales como para personas discapacitadas. El sistema se diseñará
-                    para optimizar la utilización del espacio de estacionamiento disponible,
-                    asegurando que todas las personas tengan acceso a parqueaderos adecuados
-                    y garantizando la inclusión y comodidad de personas con discapacidades.
-                    Además, el sistema tiene como objetivo mejorar la experiencia de
-                    estacionamiento al reducir el estrés y la incertidumbre asociados con la
-                    búsqueda de espacios vacíos!
-                </h2>
-                <div class="butons">
-                    <a href="#" class="btn-1">Informacion</a>
-                </div>
+    </header>
+ 
+   
+    <section id="somos-proya">
+        <div class="container2">
+            <app-combo></app-combo>
+        </div>
+        <div class="container">
+            <div class="img-container">
+                <img src="/Logo.jpg" alt="">
+            </div>
+            <div class="texto">
+                <h2>{{'msg.E1' | transloco }} <span class="color-acento">RRS EASYPARK</span></h2>
+                <p>{{'msg.U1' | transloco }}</p>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!--<section class="contact container">
-        <div class="contact-content">
-            <h3>Subscribete a nuestra pagina</h3>
-            <form>
-                <input type="email" placeholder="Escribe tu correo">
-                <input type="submit" class="btn-3" value="Enviar">
-            </form>
+    <section id="nuestros-programas">
+        <div class="container">
+            <h2>{{'msg.welcome' | transloco }}</h2>
+            <div class="programas">
+                <div class="carta">
+                    <h3>{{'msg.mision' | transloco }}</h3>
+                    <p>{{'msg.misiontext' | transloco }}</p>
+                 
+                </div>
+                <div class="carta">
+                    <h3>{{'msg.vision' | transloco }}</h3>
+                    <p>{{'msg.visiontext' | transloco }}</p>
+                
+                </div>
+                <div class="carta">
+                    <h3>{{'msg.objetivos' | transloco }}</h3>
+                    <p>{{'msg.object' | transloco }}
+                    </p>
+                </div>  
+            </div>
         </div>
+    </section>
 
-            
-    </section>-->
+    
+
+    <section id="caracteristicas">
+        <div class="contenedor">
+            <div class="texto">
+              <h2>{{'msg.unete' | transloco }}</h2>
+              <p>{{'msg.unetetext' | transloco }}</p>
+            </div>
+            <div class="video">
+                <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/EcyIzwYFydA?si=RAT4aTRfFaBU5D22" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; RRS EASYPARK</p>
+        </div>
+    </footer>
+</body>
+</html>

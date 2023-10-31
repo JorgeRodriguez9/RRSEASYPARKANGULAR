@@ -47,8 +47,10 @@
 }
 
 .example-card {
-  width: 700px;
-  height: 500px;
+  width: 500px;
+ margin-bottom: 10px;
+  flex: 1;
+  padding-bottom: 0; /* Elimina el espacio interno inferior */
 }
 
 /* Estilo para la etiqueta */
@@ -108,7 +110,10 @@
 .space2 {
   margin-top: 2px;
 }
-
+.text{
+  margin-bottom: -50px;
+  margin-top: 10px;
+}
 
 .title {
   padding: 5px;
@@ -117,6 +122,16 @@
   color: rgb(255, 255, 255);
 }
 
+.title1{
+  font-family: Monospace, sans-serif; 
+  color: #5a0553;
+}
+
 .titleWord {
   margin-top: 10px;
+}
+.space1{
+  text-align: right;
+  margin-top: 22px;
+  margin-right: 10px;
 }

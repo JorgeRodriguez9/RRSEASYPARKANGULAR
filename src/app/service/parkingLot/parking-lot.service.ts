@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { ParkingLot } from 'Models/ParkingLot';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { ParkingLotEdit } from 'Models/ParkingLotEdit';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class ParkingLotService {
  
   public AddParkingLot(parkingLot: ParkingLot): Observable<ParkingLot> {
     return this._http.post<ParkingLot>(this.Endpoint + this.complement, parkingLot);
+  } 
+
+  public UpdateParkingLot(parkingLot: ParkingLotEdit): Observable<ParkingLotEdit> {
+    return this._http.put<ParkingLotEdit>(this.Endpoint + this.complement, parkingLot);
   } 
 
    

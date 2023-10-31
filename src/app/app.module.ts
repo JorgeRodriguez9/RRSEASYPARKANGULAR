@@ -41,8 +41,19 @@ import { ViewParkinglotsComponent } from './components/view-parkinglots/view-par
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
+
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+
+
+import { SiveNavClientComponent } from './components/sive-nav-client/sive-nav-client.component';
+import { GetReservationsComponent } from './components/get-reservations/get-reservations.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ParkingLotsComponent } from './components/parking-lots/parking-lots.component';
+import { ModifyParkingLotComponent } from './components/modify-parking-lot/modify-parking-lot.component';
+import { TranslocoRootModule } from './transloco-root.module';
+import { ComboComponent } from './components/combo/combo.component';
 
 
 @NgModule({
@@ -60,7 +71,16 @@ import { GoogleMapsModule } from '@angular/google-maps';
     RegisterComponent,
     PasswordRecoveryComponent,
     ConfirmPasswordComponent,
+
     GoogleMapsComponent
+
+    SiveNavClientComponent,
+    GetReservationsComponent,
+    ConfirmDialogComponent,
+    ParkingLotsComponent,
+    ModifyParkingLotComponent,
+    ComboComponent
+
   ],
   imports: [
     NgFor,
@@ -90,7 +110,12 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatToolbarModule,
     MatMenuModule,
     MatSnackBarModule,
+
     GoogleMapsModule
+
+    MatDialogModule,
+    TranslocoRootModule
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInteceptor, multi: true}

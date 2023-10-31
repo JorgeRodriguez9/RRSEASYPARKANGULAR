@@ -5,6 +5,8 @@ import { ParkingLot } from 'Models/ParkingLot';
 import { CityService } from 'src/app/service/city/city.service';
 import { ParkingLotService } from 'src/app/service/parkingLot/parking-lot.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-register-parkinglot',
@@ -22,8 +24,8 @@ export class RegisterParkinglotComponent implements OnInit {
   select2: boolean = false;
   public ListCities: City[] = [];
 
+  constructor(private translocoservice: TranslocoService, private languageService: LenguageService, private _CityService: CityService, private _ParkingLotService: ParkingLotService,private fb: FormBuilder, private _snackBar: MatSnackBar) {
 
-  constructor(private _CityService: CityService, private _ParkingLotService: ParkingLotService,private fb: FormBuilder, private _snackBar: MatSnackBar) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       adress: ['', Validators.required],
@@ -74,6 +76,9 @@ export class RegisterParkinglotComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCity();
+    const selectedLanguage = this.languageService.getSelectedLanguage();
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    this.translocoservice.setActiveLang(selectedLanguage);
   }
 
   getCity() {

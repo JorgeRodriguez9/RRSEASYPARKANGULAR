@@ -2,7 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { Reservation } from 'Models/Reservation';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
 import { ReservationService } from 'src/app/service/reservation/reservation.service';
 
 @Component({
@@ -19,7 +21,7 @@ export class ViewReservationComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private _reservation:ReservationService, private route: ActivatedRoute){
+  constructor(private translocoservice: TranslocoService, private languageService: LenguageService,private _reservation:ReservationService, private route: ActivatedRoute){
 
   }
 
@@ -29,7 +31,9 @@ export class ViewReservationComponent {
     })
 
     this.getReservations();
-    console.log(this.dataSource.data);
+    const selectedLanguage = this.languageService.getSelectedLanguage();
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    this.translocoservice.setActiveLang(selectedLanguage);
     
   }
   ngAfterViewInit() {
@@ -43,7 +47,10 @@ export class ViewReservationComponent {
 
      this.fechaSeleccionada = event.value;
      if(this.fechaSeleccionada){
-      const selectedDate = this.fechaSeleccionada.toISOString().split('T')[0]; // Obtén la fecha seleccionada en formato 'YYYY-MM-DD'
+      const mes = (this.fechaSeleccionada.getMonth() + 1).toString().padStart(2, '0');
+      const dia = this.fechaSeleccionada.getDate().toString().padStart(2, '0');
+      const selectedDate = `${mes}-${dia}-${this.fechaSeleccionada.getFullYear()}`;
+      console.log(selectedDate);
       this.dataSource.filter = selectedDate
      }
   }

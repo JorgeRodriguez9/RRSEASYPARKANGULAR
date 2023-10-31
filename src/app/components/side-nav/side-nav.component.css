@@ -12,10 +12,16 @@
   .custom-drawer {
     background-color: #f0f0f0; /* Cambia el color de fondo según tu preferencia */
     /* Otros estilos personalizados aquí */
-    width: 230px;
+    width: 245px;
+    position: fixed;
+    margin-top: 64px;
 }
 .mattoolbar1{
   display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que el toolbar esté encima del resto del contenido */
 }
 mat-toolbar {
     display: flex;
@@ -42,4 +48,14 @@ mat-toolbar {
     background-color: #ddd; /* Color de fondo cuando el cursor está sobre el elemento */
     cursor: pointer;
 }
-
+mat-drawer-container.example-container {
+  margin-top: 64px; /* La altura del mat-toolbar */
+}
+.icon-blue {
+  color: rgb(162, 0, 255); /* Cambia el color al que desees, en este caso, azul */
+  margin-right: 5px;
+}
+.icon-container {
+  display: flex;
+  align-items: center;
+}
