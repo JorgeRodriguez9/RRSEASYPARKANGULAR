@@ -3,9 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { RecoveryPassword } from 'Models/RecoveryPassword';
 import { Token } from 'Models/Token';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
 
 function passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
   const password = control.get('password');
@@ -29,7 +31,7 @@ export class ConfirmPasswordComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor(private _snackBar: MatSnackBar, private route: ActivatedRoute, private fb: FormBuilder, public _apiauth: AuthService, private _router: Router){
+  constructor(private translocoservice: TranslocoService, private languageService: LenguageService, private _snackBar: MatSnackBar, private route: ActivatedRoute, private fb: FormBuilder, public _apiauth: AuthService, private _router: Router){
 
     this.form = this.fb.group({
       password: ['', Validators.required],
@@ -43,6 +45,9 @@ export class ConfirmPasswordComponent implements OnInit {
       this.token = params['token']
     })
     this.validation();
+    const selectedLanguage = this.languageService.getSelectedLanguage();
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    this.translocoservice.setActiveLang(selectedLanguage);
   }
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
