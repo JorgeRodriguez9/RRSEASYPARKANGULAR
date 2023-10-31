@@ -72,7 +72,7 @@ import { ComboComponent } from './components/combo/combo.component';
     PasswordRecoveryComponent,
     ConfirmPasswordComponent,
 
-    GoogleMapsComponent
+    GoogleMapsComponent,
 
     SiveNavClientComponent,
     GetReservationsComponent,
@@ -110,9 +110,7 @@ import { ComboComponent } from './components/combo/combo.component';
     MatToolbarModule,
     MatMenuModule,
     MatSnackBarModule,
-
-    GoogleMapsModule
-
+    GoogleMapsModule,
     MatDialogModule,
     TranslocoRootModule
 
