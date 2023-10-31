@@ -13,7 +13,7 @@ import { RecoveryPassword } from 'Models/RecoveryPassword';
 import { Token } from 'Models/Token';
 import { LenguageService } from '../lenguage/lenguage.service';
 import { TranslocoService } from '@ngneat/transloco';
-//import * as jwt from 'jsonwebtoken';
+
 
 @Injectable({
   providedIn: 'root'

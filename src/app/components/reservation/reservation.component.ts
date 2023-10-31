@@ -110,7 +110,8 @@ export class ReservationComponent {
   }
   ngOnInit(): void {
     this.getTypeVehicle();
-
+    
+    // Here we get the id that comes from the other view
     this.route.params.subscribe(params => {
       this.id = params['id']
     })

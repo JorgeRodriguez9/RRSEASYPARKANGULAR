@@ -116,10 +116,18 @@
 </app-sive-nav-client>
 
 
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>
 
+  <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
 
-
-
+</div>
 
 <!--
 

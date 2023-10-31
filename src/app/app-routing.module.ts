@@ -14,10 +14,14 @@ import { ViewParkinglotsComponent } from './components/view-parkinglots/view-par
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
+
+import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
+
 import { SiveNavClientComponent } from './components/sive-nav-client/sive-nav-client.component';
 import { GetReservationsComponent } from './components/get-reservations/get-reservations.component';
 import { ParkingLotsComponent } from './components/parking-lots/parking-lots.component';
 import { ModifyParkingLotComponent } from './components/modify-parking-lot/modify-parking-lot.component';
+
 
 
 const routes: Routes = [
@@ -35,8 +39,12 @@ const routes: Routes = [
   {path: 'Register', component:RegisterComponent},
   {path: 'Unauthorized', component:UnauthorizedComponent},
   {path: 'ViewParkingLot', component:ViewParkinglotsComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
+
+  {path: 'googleMaps', component:GoogleMapsComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Client' }},
+
   {path: 'View', component:ParkingLotsComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
   {path: 'Modify/:id', component:ModifyParkingLotComponent, canActivate : [AuthGuard, RoleGuard], data: { requiredRole: 'Propietary Park' }},
+
 ];
 
 @NgModule({

@@ -24,8 +24,8 @@ export class RegisterParkinglotComponent implements OnInit {
   select2: boolean = false;
   public ListCities: City[] = [];
 
-
   constructor(private translocoservice: TranslocoService, private languageService: LenguageService, private _CityService: CityService, private _ParkingLotService: ParkingLotService,private fb: FormBuilder, private _snackBar: MatSnackBar) {
+
     this.form = this.fb.group({
       name: ['', Validators.required],
       adress: ['', Validators.required],

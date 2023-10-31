@@ -111,7 +111,6 @@ tr.example-element-row:not(.example-expanded-row):active {
   color: blue; /* Cambia el color al que desees, en este caso, azul */
 }
 
-
 .image{
   width: 230px;
   height: 150px;
@@ -130,3 +129,4 @@ tr.example-element-row:not(.example-expanded-row):active {
   margin-top: 22px;
   margin-right: 10px;
 }
+
