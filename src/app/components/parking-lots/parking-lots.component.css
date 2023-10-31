@@ -87,3 +87,8 @@
   .modificar-btn:hover {
     background-color: #41043f;
   }
+  .space{
+    text-align: right;
+    margin-top: 22px;
+    margin-right: 10px;
+  }

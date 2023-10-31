@@ -4,11 +4,11 @@ import { Component, Inject } from '@angular/core';
 @Component({
   selector: 'app-confirm-dialog',
   template: `
-    <h2 mat-dialog-title>Confirmar</h2>
-    <mat-dialog-content>{{ data }}</mat-dialog-content>
+    <h2 mat-dialog-title>{{'confirm.RE' | transloco }}</h2>
+    <mat-dialog-content>{{'confirm.mensaje' | transloco }}</mat-dialog-content>
     <mat-dialog-actions>
-      <button mat-button (click)="onNoClick()">Cancelar</button>
-      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
+      <button mat-button (click)="onNoClick()">{{'confirm.cancelar' | transloco }}</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>{{'confirm.aceptar' | transloco }}</button>
     </mat-dialog-actions>
   `
 })

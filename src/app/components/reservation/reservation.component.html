@@ -1,7 +1,8 @@
 <app-sive-nav-client>
   <div class="title">
-    <h1 class="titleWord">Reservas</h1>
+    <h1 class="titleWord">{{'reservation.RE' | transloco }}</h1>
   </div>
+  <div class="space1"><app-combo></app-combo></div>
   
   <div class="containerI" *ngIf="parking != undefined">
     <div class="column column1">
@@ -9,17 +10,17 @@
       <div class="container">
         <form [formGroup]="reservationform" (ngSubmit)="AddReservation()">
           <div class="form-group">
-            <label for="startdate" class="form-label">Fecha:</label>
+            <label for="startdate" class="form-label">{{'reservation.FE' | transloco }}</label>
             <input type="date" formControlName="date" name="date" class="form-control">
           </div>
   
           <div class="form-group space">
-            <label for="enddate" class="form-label">Hora inicio:</label>
+            <label for="enddate" class="form-label">{{'reservation.HOI' | transloco }}</label>
             <input type="time" formControlName="starttime">
           </div>
   
           <div class="form-group space">
-            <label for="enddate" class="form-label">Hora fin:</label>
+            <label for="enddate" class="form-label">{{'reservation.HOF' | transloco }}</label>
             <input type="time" formControlName="endtime">
           </div>
   
@@ -32,10 +33,10 @@
           </mat-form-field>-->
   
           <mat-form-field class="space">
-            <mat-label>Tipos de parqueaderos:</mat-label>
+            <mat-label>{{'reservation.TI' | transloco }}</mat-label>
             <mat-select formControlName="parkingType" (valueChange)="UpdateList($event)">
               <ng-container *ngIf="parking.disabilityservices === 'SI'; else noOption">
-                <mat-option value="SI">DISCAPACITADOS</mat-option>
+                <mat-option value="SI">{{'reservation.DI' | transloco }}</mat-option>
                 <mat-option value="NO">GENERAL</mat-option>
               </ng-container>
               <ng-template #noOption>
@@ -45,13 +46,13 @@
           </mat-form-field>
   
           <mat-form-field class="space2">
-            <mat-label>Tipo de Vehiculo</mat-label>
+            <mat-label>{{'reservation.TIP' | transloco }}</mat-label> 
             <mat-select formControlName="vehicleType">
               <mat-option *ngFor="let TypoVehicle of ListVehiclesFilter"
                 value={{TypoVehicle.id}}>{{TypoVehicle.name}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <button class="custom-button" Type="submit" [disabled]="!reservationform.valid"> Agendar </button>
+          <button class="custom-button" Type="submit" [disabled]="!reservationform.valid"> {{'reservation.AG' | transloco }} </button>
         </form>
   
   
@@ -69,9 +70,9 @@
   
               <div >
                 <div >
-                  <p>- Telefono: {{parking.telephone}} </p>
-                  <p>- Precio: {{parking.normalPrice}} </p>
-                  <p *ngIf="parking.disabilityservices === 'SI'">- Precio Discapacitados: {{parking.disabilityPrice}} </p>
+                  <p>- {{'reservation.TE' | transloco }} {{parking.telephone}} </p>
+                  <p>- {{'reservation.PR' | transloco }} {{parking.normalPrice}} </p>
+                  <p *ngIf="parking.disabilityservices === 'SI'">- {{'reservation.PRD' | transloco }} {{parking.disabilityPrice}} </p>
                 </div>
               </div>
             </mat-card-content>

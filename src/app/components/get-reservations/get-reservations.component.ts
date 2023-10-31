@@ -4,6 +4,8 @@ import { Reservation } from 'Models/Reservation';
 import { ReservationGet } from 'Models/ReservationGet';
 import { ReservationService } from 'src/app/service/reservation/reservation.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-get-reservations',
@@ -13,12 +15,16 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 export class GetReservationsComponent implements OnInit{
 
   public list: ReservationGet[] = [];
+    selectedLanguage!: string;
 
-constructor(private _reservation: ReservationService, private dialog: MatDialog){
+constructor(private translocoservice: TranslocoService,  private languageService: LenguageService, private _reservation: ReservationService, private dialog: MatDialog){
 
 }
 ngOnInit(): void {
   this.getReservas();
+  const selectedLanguage = this.languageService.getSelectedLanguage();
+  localStorage.setItem('selectedLanguage', selectedLanguage);
+  this.translocoservice.setActiveLang(selectedLanguage)
 }
 getReservas() {
   this._reservation.getReservationsClient().subscribe(response => { this.list = response;});

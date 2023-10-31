@@ -247,3 +247,8 @@ header nav{
     padding-bottom: 0;
     padding-right: 20px;
 }
+.space{
+    text-align: right;
+    margin-top: 22px;
+    margin-right: 10px;
+  }

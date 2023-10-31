@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Route, Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { UserPost } from 'Models/UserPost';
 import { catchError, map } from 'rxjs/operators';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
 import { RolserviceService } from 'src/app/service/rol/rolservice.service';
 
 @Component({
@@ -31,15 +33,17 @@ export class LoginComponent implements OnInit{
     password: new FormControl('')
   });*/
 
-constructor(private _snackBar: MatSnackBar,public _apiauth: AuthService, private _router: Router, private fb: FormBuilder, public _rolService: RolserviceService) {
+constructor(private translocoservice: TranslocoService, private languageService: LenguageService, private _snackBar: MatSnackBar,public _apiauth: AuthService, private _router: Router, private fb: FormBuilder, public _rolService: RolserviceService) {
   if(this._apiauth.userData){
     this._router.navigate(['/ParkingLot'])
   }
 }
 
-  ngOnInit(): void {
-    
-  }
+ngOnInit(): void {
+  const selectedLanguage = this.languageService.getSelectedLanguage();
+  localStorage.setItem('selectedLanguage', selectedLanguage);
+  this.translocoservice.setActiveLang(selectedLanguage)
+}
 
   login(){
     

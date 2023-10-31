@@ -1,12 +1,7 @@
 <app-side-nav>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Formulario de contacto</title>
-    </head>
-
     <body>
-
+        <div class="space"><app-combo></app-combo></div>
         <div class="contact_form">
 
             <div class="formulario">
@@ -18,19 +13,19 @@
 
 
                     <div class="inputContainer full">
-                        <label for="" class="label1">Foto: </label>
+                        <label for="" class="label1">{{'register-parkinglot.foto' | transloco }}: </label>
                         <input type="file" (change)="getImage($event,0)">
                     </div>
 
                     <p>
-                        <label for="nombre" class="colocar_nombre">Nombre
+                        <label for="nombre" class="colocar_nombre">{{'register-parkinglot.nombre' | transloco }}
                         </label>
                         <input type="text" name="introducir_nombre" id="nombre" placeholder="Escribe tu nombre"
                         formControlName="name"  [(ngModel)]="parking.name">
                     </p>
 
                     <p>
-                        <label for="Direccion" class="colocar_email">Dirección
+                        <label for="Direccion" class="colocar_email">{{'register-parkinglot.direccion' | transloco }}
                         </label>
                         <input type="email" name="introducir_email" id="direccion" placeholder="Escribe tu Email"
                         formControlName="adress" [(ngModel)]="parking.adress">
@@ -46,7 +41,7 @@
                         </div>
                         <div class="column">
                             <p>
-                                <label for="Telefono" class="colocar_Telefono">Telefono
+                                <label for="Telefono" class="colocar_Telefono">{{'register-parkinglot.telefono' | transloco }}
                                 </label>
                                 <input type="text" name="introducir_telefono" id="telefono"
                                 formControlName="telephone" [(ngModel)]="parking.telephone">
@@ -55,14 +50,14 @@
                     </div>
 
                     <p>
-                        <label for="precio_general" class="colocar_precio_general">Precio General
+                        <label for="precio_general" class="colocar_precio_general">{{'register-parkinglot.precio' | transloco }}
                         </label>
                         <input type="text" name="introducir_precio_general" id="precio_general"
                         formControlName="normalPrice" [(ngModel)]="parking.normalPrice">
                     </p>
 
                     <p>
-                        <label for="disability" class="colocar_disability">Precio Discapacitados
+                        <label for="disability" class="colocar_disability">{{'register-parkinglot.preciodiscapacitados' | transloco }}
                         </label>
                         <input type="text" name="introducir_disability" id="disability"
                         formControlName="disabilityPrice" [(ngModel)]="parking.disabilityPrice">
@@ -70,7 +65,7 @@
                     <div class="row">
                         <div class="column">
                             <p>
-                                <label for="cantSpacesCar" class="colocar_cantSpacesCar">Espacios para Carro
+                                <label for="cantSpacesCar" class="colocar_cantSpacesCar">{{'register-parkinglot.carro' | transloco }}
                                 </label>
                                 <input type="text" name="introducir_cantSpacesCar" id="cantSpacesCar"
                                 formControlName="cantSpacesCar" [(ngModel)]="parking.cantSpacesCar">
@@ -78,8 +73,7 @@
                         </div>
                         <div class="column">
                             <p>
-                                <label for="cantSpacesMotorcycle" class="colocar_cantSpacesMotorcycle">Espacios para
-                                    Moto
+                                <label for="cantSpacesMotorcycle" class="colocar_cantSpacesMotorcycle">{{'register-parkinglot.moto' | transloco }}
                                 </label>
                                 <input type="text" name="introducir_cantSpacesMotorcycle" id="cantSpacesMotorcycle"
                                 formControlName="cantSpacesMotorcycle" [(ngModel)]="parking.cantSpacesMotorcycle">
@@ -87,8 +81,7 @@
                         </div>
                     </div>
                     <p>
-                        <label for="cantSpacesDisability" class="colocar_cantSpacesDisability">Espacios para
-                            Discapacitados
+                        <label for="cantSpacesDisability" class="colocar_cantSpacesDisability">{{'register-parkinglot.discapacidados' | transloco }}
                         </label>
                         <input type="text" name="introducir_cantSpacesDisability" id="cantSpacesDisability"
                         formControlName="cantSpacesDisability"  [(ngModel)]="parking.cantSpacesDisability">
@@ -96,7 +89,7 @@
                     <div class="row">
                         <div class="column">
                             <p>
-                                <label for="cityName" class="cityName">Ciudad
+                                <label for="cityName" class="cityName">{{'register-parkinglot.ciudad' | transloco }}
                                 </label>
                                 <select id="cityName" placeholder="parking.cityName" formControlName="cityId">
                                     <option value="" disabled selected>{{parking.cityName}}</option>
@@ -106,25 +99,25 @@
                         </div>
                         <div class="column">
                             <p>
-                                <label for="disabilityservices" class="disabilityservices">Servicio discapacitados
+                                <label for="disabilityservices" class="disabilityservices">{{'register-parkinglot.servicios' | transloco }}
                                 </label>
                                 <select id="disabilityservices" placeholder="parking.disabilityservices" formControlName="disabilityservices">
                                     <option value="" disabled selected>{{parking.disabilityservices}}</option>
-                                    <option value="SI">SI</option>
-                                    <option value="NO">NO</option>
+                                    <option value="SI">{{'register-parkinglot.si' | transloco }}</option>
+                                    <option value="NO">{{'register-parkinglot.no' | transloco }}</option>
                                 </select>
                             </p>
                         </div>
                     </div>
                     <p>
-                        <label for="info" class="colocar_info">Informacion del Parqueadero
+                        <label for="info" class="colocar_info">{{'register-parkinglot.info' | transloco }}
                         </label>
                         <textarea name="introducir_info" class="info" id="mensaje"
                         formControlName="info" [(ngModel)]="parking.info"></textarea>
                     </p>
 
                     <button type="submit" name="enviar_formulario" id="enviar">
-                        <p>Enviar</p>
+                        <p>{{'view-parkinLot.modificar' | transloco }}</p>
                     </button>
                 </form>
             </div>

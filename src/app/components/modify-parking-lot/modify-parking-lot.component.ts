@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { City } from 'Models/City';
 import { ParkingLot } from 'Models/ParkingLot';
 import { ParkingLotEdit } from 'Models/ParkingLotEdit';
 import { CityService } from 'src/app/service/city/city.service';
+import { LenguageService } from 'src/app/service/lenguage/lenguage.service';
 import { ParkingLotService } from 'src/app/service/parkingLot/parking-lot.service';
 
 @Component({
@@ -19,13 +21,18 @@ export class ModifyParkingLotComponent {
   parking!: ParkingLot;
   inputsHabilitados = false;
   public ListCities: City[] = [];
-  images:string="assets/images/Logo.jpg";
+  images:string="";
   public numImg:number=0;
   form: FormGroup;
   public i:number=0;
-  public imagen:Array<string> = [this.images]
+  public imagen:Array<string> = [this.images];
+  selectedLanguage!: string;
   
-constructor(private _snackBar: MatSnackBar, private fb: FormBuilder, private route: ActivatedRoute, private _parkingLot: ParkingLotService, private _CityService: CityService){
+constructor(private translocoservice: TranslocoService, private _snackBar: MatSnackBar, private fb: FormBuilder, private route: ActivatedRoute, private _parkingLot: ParkingLotService, private _CityService: CityService, private languageService: LenguageService){
+  this.languageService.selectedLanguage$.subscribe(language => {
+    this.selectedLanguage = language;
+  });
+  
   this.form = this.fb.group({
     name: [''],
     adress: [''],
@@ -51,6 +58,9 @@ constructor(private _snackBar: MatSnackBar, private fb: FormBuilder, private rou
 
     this.getParkingLot();
     this.getCity();
+    const selectedLanguage = this.languageService.getSelectedLanguage();
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    this.translocoservice.setActiveLang(selectedLanguage);
 
   }
 
@@ -92,6 +102,9 @@ constructor(private _snackBar: MatSnackBar, private fb: FormBuilder, private rou
     }
   }
   AddParkingLot() {
+    if(this.imagen[0] == ""){
+      this.imagen[0] = this.parking.image;
+    }
     const model: ParkingLotEdit = {
       id: this.id,
       name: this.form.value.name || this.parking.name,
@@ -105,7 +118,7 @@ constructor(private _snackBar: MatSnackBar, private fb: FormBuilder, private rou
       cantSpacesCar: this.form.value.cantSpacesCar || this.parking.cantSpacesCar,
       cantSpacesDisability: this.form.value.cantSpacesDisability || this.parking.cantSpacesDisability,
       disabilityservices: this.form.value.disabilityservices || this.parking.disabilityservices,
-      image: this.imagen[0] || this.parking.image,
+      image: this.imagen[0],
       cityId: this.form.value.cityId || this.parking.cityId
     }
     console.log(model);

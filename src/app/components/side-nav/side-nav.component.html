@@ -6,7 +6,7 @@
     <h1>RRS EASYPARK</h1>
     <div class="user-info">
         <span>
-            Hola,
+            {{'sive-nav.hola' | transloco }},
             {{this.user?.Name | titlecase}}
         </span>
         <button mat-icon-button [matMenuTriggerFor]="userMenu">
@@ -17,7 +17,7 @@
     <mat-menu #userMenu="matMenu">
         <button mat-menu-item (click)="logOut()">
             <mat-icon>logout</mat-icon>
-            <span>Cerrar Sesion</span>
+            <span>{{'sive-nav.cerrar' | transloco }}</span>
         </button>
     </mat-menu>
 </mat-toolbar>
@@ -27,25 +27,25 @@
             <mat-list-item role="listitem" routerLink="/ViewParkingLot" routerLinkActive="active" class="menu-item">
                 <div class="icon-container">
                     <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="list"></mat-icon>
-                    {{"RESERVAS" | titlecase}}
+                    {{'sive-nav.reservas' | transloco }}
                   </div>
             </mat-list-item>
             <mat-list-item role="listitem" routerLink="/RegisterParkingLot" routerLinkActive="active" class="menu-item">
                 <div class="icon-container">
                     <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="app_registration"></mat-icon>
-                    {{"REGISTRAR PARQUEADERO" | titlecase}}
+                    {{'sive-nav.registrarPark' | transloco }}
                   </div>
             </mat-list-item>
             <mat-list-item role="listitem" routerLink="/View" routerLinkActive="active" class="menu-item">
                 <div class="icon-container">
                     <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
-                    {{"MODIFICAR PARQUEADEROS" | titlecase}}
+                    {{'sive-nav.modificar' | transloco }}
                   </div>
             </mat-list-item>
             <mat-list-item role="listitem" (click)="logOut()" class="menu-item">
                 <div class="icon-container">
                     <mat-icon class="icon-blue" aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
-                    {{"CERRAR SESION" | titlecase}}
+                    {{'sive-nav.cerrar' | transloco }}
                   </div>
             </mat-list-item>
         </mat-list>

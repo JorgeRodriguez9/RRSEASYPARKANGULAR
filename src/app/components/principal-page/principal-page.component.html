@@ -8,60 +8,46 @@
         <div class="container">
             <p class="logo">RRS EASYPARK</p>
             <nav>
-                <a href="">Inicio</a>
-                <a href="/Register">Registrarse</a>
-                <a href="/Login">Iniciar Sesion</a>
+                <a href="">{{'msg.inicio' | transloco }}</a>
+                <a href="/Register">{{'msg.registrarse' | transloco }}</a>
+                <a href="/Login">{{'msg.iniciar' | transloco }}</a>
             </nav>
         </div>
     </header>
-    
+ 
+   
     <section id="somos-proya">
+        <div class="container2">
+            <app-combo></app-combo>
+        </div>
         <div class="container">
             <div class="img-container">
                 <img src="/Logo.jpg" alt="">
             </div>
             <div class="texto">
                 <h2>{{'msg.E1' | transloco }} <span class="color-acento">RRS EASYPARK</span></h2>
-                <app-combo></app-combo>
-                <p>El propósito de RRS EasyPark es implementar un sistema de reserva
-                    de parqueaderos que brinde una solución eficiente y equitativa tanto para
-                    personas normales como para personas discapacitadas. El sistema se diseñará
-                    para optimizar la utilización del espacio de estacionamiento disponible,
-                    asegurando que todas las personas tengan acceso a parqueaderos adecuados
-                    y garantizando la inclusión y comodidad de personas con discapacidades.
-                    Además, el sistema tiene como objetivo mejorar la experiencia de
-                    estacionamiento al reducir el estrés y la incertidumbre asociados con la
-                    búsqueda de espacios vacíos!</p>
+                <p>{{'msg.U1' | transloco }}</p>
             </div>
         </div>
     </section>
 
     <section id="nuestros-programas">
         <div class="container">
-            <h2>NOSOTROS</h2>
+            <h2>{{'msg.welcome' | transloco }}</h2>
             <div class="programas">
                 <div class="carta">
-                    <h3>MISION</h3>
-                    <p>Facilitar la experiencia de estacionamiento para todas las personas, incluyendo aquellas 
-                        con discapacidades, al proporcionar un aplicativo web intuitivo y accesible que permita 
-                        localizar y reservar parqueaderos cercanos a su destino de manera rápida, segura y 
-                        conveniente y se acomode a sus condiciones y comodidades.</p>
+                    <h3>{{'msg.mision' | transloco }}</h3>
+                    <p>{{'msg.misiontext' | transloco }}</p>
                  
                 </div>
                 <div class="carta">
-                    <h3>VISIÓN</h3>
-                    <p>Ser la plataforma líder a nivel global en la gestión de reservas de parqueaderos, 
-                        reconocida por nuestra excelencia en accesibilidad y servicio al cliente. Aspiramos a
-                        transformar la manera en que las personas abordan el estacionamiento, convirtiéndolo
-                        en una experiencia sin complicaciones y adaptada a las necesidades individuales.</p>
+                    <h3>{{'msg.vision' | transloco }}</h3>
+                    <p>{{'msg.visiontext' | transloco }}</p>
                 
                 </div>
                 <div class="carta">
-                    <h3>OBJETIVO GENERAL</h3>
-                    <p>Construir un aplicativo web que se encargue de brindar la ubicación o gestionar
-                        las reservas que hacen las personas normales y discapacitadas a los distintos
-                        parqueaderos cercanos a su lugar de destino, con la ventaja de poder hacer todo
-                        desde la comodidad de su casa, o sin ningún tipo de estrés para la persona.
+                    <h3>{{'msg.objetivos' | transloco }}</h3>
+                    <p>{{'msg.object' | transloco }}
                     </p>
                 </div>  
             </div>
@@ -73,10 +59,8 @@
     <section id="caracteristicas">
         <div class="contenedor">
             <div class="texto">
-              <h2>UNETE</h2>
-              <p>Imagina una experiencia de estacionamiento sin complicaciones, diseñada para todos. Nuestro innovador aplicativo web facilita la ubicación y reserva de parqueaderos cercanos a tu destino, brindando comodidad a cada paso. Ya sea que seas una persona en general o enfrentes condiciones físicas, 
-                nuestro servicio te libera del estrés de la búsqueda. Desde la tranquilidad de tu hogar, podrás asegurar un espacio 
-                adaptado a tus necesidades. Únete a nosotros y transforma la forma en que vives la movilidad urbana.</p>
+              <h2>{{'msg.unete' | transloco }}</h2>
+              <p>{{'msg.unetetext' | transloco }}</p>
             </div>
             <div class="video">
                 <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/EcyIzwYFydA?si=RAT4aTRfFaBU5D22" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
