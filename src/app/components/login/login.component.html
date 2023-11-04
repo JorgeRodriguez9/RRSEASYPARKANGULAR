@@ -36,8 +36,8 @@
         <div class="container">
             <p class="logo">RRS EASYPARK</p>
             <nav>
-                <a href="">{{'Login.IN' | transloco }}</a>
-                <a href="/Register">{{'Login.RE1' | transloco }}</a>
+                <a routerLink="">{{'Login.IN' | transloco }}</a>
+                <a routerLink="/Register">{{'Login.RE1' | transloco }}</a>
             </nav>
             <div class="space"><app-combo></app-combo></div>
         </div>
@@ -57,14 +57,14 @@
                 </div>
                 <div class="remember-forgot">
 
-                    <a href="/PasswordRecovery">{{'Login.OL' | transloco }}</a>
+                    <a routerLink="/PasswordRecovery">{{'Login.OL' | transloco }}</a>
 
                 </div>
 
                 <button type = "submit" [disabled]="!loginForm.valid"  mat-raised-button class="btn">{{'Login.E2' | transloco }}</button>
 
                 <div class="register-link">
-                    <p>{{'Login.NO' | transloco }} <a href="/Register">{{'Login.RE' | transloco }}</a></p>
+                    <p>{{'Login.NO' | transloco }} <a routerLink="/Register">{{'Login.RE' | transloco }}</a></p>
                 </div>
             </form>
         </div>
