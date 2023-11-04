@@ -1,4 +1,4 @@
 export const environment = {
-    endPoint: "https://localhost:7176/",
+    endPoint: "https://rrseasypark.azurewebsites.net/",
     production: false
 };

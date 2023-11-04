@@ -124,7 +124,7 @@ header a:hover{
         rgba(0,0,0,0.5),
         rgba(0,0,0,0.5)
     )
-    ,url("/assets/images/cartas.jpg");
+    ,url("/./assets/images/cartas.jpg");
 
 }
 
@@ -134,7 +134,7 @@ header a:hover{
         rgba(0,0,0,0.5),
         rgba(0,0,0,0.5)
     )
-    ,url("/assets/images/cartas.jpg");
+    ,url("/./assets/images/cartas.jpg");
 }
 
 .carta:nth-child(3){
@@ -143,7 +143,7 @@ header a:hover{
         rgba(0,0,0,0.5),
         rgba(0,0,0,0.5)
     )
-    ,url("/assets/images/cartas.jpg");
+    ,url("/./assets/images/cartas.jpg");
 
 }
 
@@ -256,7 +256,7 @@ footer .container{
     }
 
     #somos-proya .img-container{
-        background-image: url("/assets/images/Logo.jpg");
+        background-image: url("/./assets/images/Logo.jpg");
         background-size: cover;
         background-position: center center;
         height: 500px;
